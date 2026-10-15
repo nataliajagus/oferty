@@ -1,0 +1,1418 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<title>Oferta CRM dla I Love Trips</title>
+<style>
+/* Układ: „dzień w wypożyczalni na Islandii”. Ciemne pasy w zieleni panelu przeplatane z chłodnym, mglistym tłem,
+   prawdziwe ekrany panelu zamiast ikonek, harmonogram jako droga z żółtą linią środkową.
+   Jedna świadoma kolorystyka (jak panel CRM), kolory ustawione wprost, bez trybu ciemnego. */
+:root {
+  color-scheme: light;
+  --mist: #edf1ee;      /* tło strony: chłodna mgła */
+  --paper: #ffffff;
+  --stone: #dfe5e1;     /* linie, delikatne tła */
+  --ink: #142019;       /* tekst */
+  --ink-soft: #3b4842;
+  --muted: #66736c;
+  --forest: #1c2b23;    /* ciemne sekcje, jak panel */
+  --forest-2: #24382d;
+  --moss: #48624f;
+  --mint: #9fe0b9;      /* akcent na ciemnym */
+  --signal: #f0b23c;    /* żółć oznakowania dróg: przyciski i jeden akcent na sekcję */
+  --signal-ink: #3a2a06;
+  --wa: #25d366;
+  --display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* ta sama czcionka co panel CRM */
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --r: 14px;
+  --r-lg: 22px;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 5.5rem; }
+body { margin: 0; background: var(--mist); color: var(--ink); font: 400 1.0625rem/1.65 var(--body); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--display); margin: 0; letter-spacing: -.02em; text-wrap: balance; }
+h2 { font-size: clamp(2rem, 4.2vw, 3.2rem); font-weight: 700; line-height: 1.02; }
+h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.25; letter-spacing: -.01em; }
+p { margin: 0; }
+.wrap { max-width: 74rem; margin: 0 auto; padding-inline: 20px; }
+.label { font: 700 .76rem/1.2 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--moss); }
+.lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 42rem; }
+.ico { width: 1.25rem; height: 1.25rem; flex: none; }
+section.block { padding-block: 6rem 0; }
+.dark { background: var(--forest); color: #fff; }
+.dark .label { color: var(--mint); }
+.dark .lead { color: rgba(255,255,255,.78); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 8px; }
+
+/* Przyciski */
+.btn { display: inline-flex; align-items: center; gap: .55rem; text-decoration: none; font-weight: 700; padding: .9rem 1.35rem; border-radius: 999px; border: 0; cursor: pointer; font-family: var(--body); font-size: 1rem; transition: transform .2s ease, background .2s, border-color .2s, color .2s; }
+.btn .ico { width: 1.05rem; height: 1.05rem; }
+.btn.signal { background: var(--signal); color: var(--signal-ink); }
+.btn.signal:hover { transform: translateY(-2px); background: #f5c25c; }
+.btn.line { color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
+.btn.line:hover { box-shadow: inset 0 0 0 1px var(--mint); color: var(--mint); }
+.btn.line-dark { color: var(--ink); box-shadow: inset 0 0 0 1px #b9c4bd; background: var(--paper); }
+.btn.line-dark:hover { box-shadow: inset 0 0 0 1px var(--moss); color: var(--moss); }
+.btn.wa { background: var(--wa); color: #08321a; }
+.btn.wa:hover { transform: translateY(-2px); background: #3ee07a; }
+
+/* --- Nagłówek */
+.hero { position: relative; overflow: hidden; isolation: isolate; padding-block: 1.6rem 0; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background:
+  radial-gradient(45% 55% at 85% 10%, rgba(159,224,185,.22), transparent 70%),
+  radial-gradient(40% 50% at 60% 100%, rgba(124,196,214,.12), transparent 70%); }
+.topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem 1.5rem; }
+.brand { display: flex; align-items: center; gap: .65rem; font-weight: 700; font-size: .95rem; }
+.brand svg { width: 2.1rem; height: 2.1rem; }
+.meta { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .9rem; color: rgba(255,255,255,.7); }
+.meta span + span::before { content: "·"; margin-right: 1rem; color: rgba(255,255,255,.35); }
+.meta .on { color: #fff; font-weight: 700; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 2.5rem; align-items: center; padding-block: 3.5rem 4.5rem; }
+.hero h1 { font-size: clamp(2.6rem, 5.6vw, 4.6rem); font-weight: 800; line-height: .98; letter-spacing: -.025em; margin-top: 1rem; }
+.hero h1 span { color: var(--mint); }
+.hero .lead { margin-top: 1.3rem; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
+.makers { display: flex; flex-wrap: wrap; gap: 1.2rem 1.8rem; margin-top: 2.2rem; }
+.maker { display: flex; align-items: center; gap: .7rem; }
+.maker img { width: 2.9rem; height: 2.9rem; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--forest), 0 0 0 3px rgba(159,224,185,.6); }
+.maker b { display: block; font-size: .95rem; }
+.maker span { font-size: .82rem; color: rgba(255,255,255,.65); }
+
+/* Makieta: laptop z pulpitem i telefon */
+.devices { position: relative; min-width: 0; padding: 1rem 0 2.5rem 0; }
+.laptop { position: relative; border-radius: 14px 14px 6px 6px; background: #0d1511; padding: .55rem .55rem 0; box-shadow: 0 40px 80px -40px rgba(0,0,0,.8); transform: perspective(1600px) rotateY(-8deg) rotateX(3deg); transform-origin: 70% 50%; }
+.laptop img { border-radius: 8px 8px 0 0; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; width: 100%; }
+.laptop::after { content: ""; position: absolute; left: -6%; right: -6%; bottom: -14px; height: 14px; border-radius: 0 0 14px 14px; background: linear-gradient(#2c3a33, #18221d); }
+.phone { position: absolute; right: -2%; bottom: -1.5rem; width: 31%; border-radius: 1.6rem; padding: .35rem; background: #0d1511; box-shadow: 0 30px 60px -20px rgba(0,0,0,.75), inset 0 0 0 1px rgba(255,255,255,.08); transform: rotate(5deg); }
+.phone img { border-radius: 1.3rem; width: 100%; }
+.float { position: absolute; display: flex; align-items: center; gap: .6rem; background: var(--paper); color: var(--ink); border-radius: 14px; padding: .65rem .85rem; box-shadow: 0 18px 40px -18px rgba(0,0,0,.6); font-size: .85rem; line-height: 1.3; }
+.float b { display: block; font-size: .9rem; }
+.float .dot { width: 2.1rem; height: 2.1rem; border-radius: 10px; display: grid; place-items: center; flex: none; }
+.float.push { left: -4%; top: 6%; }
+.float.push .dot { background: var(--forest); color: var(--mint); }
+.float.start { left: 8%; bottom: 0; background: var(--signal); color: var(--signal-ink); }
+.float.start .big { font: 800 1.6rem/1 var(--display); letter-spacing: -.03em; }
+@media (prefers-reduced-motion: no-preference) {
+  .float.push { animation: bob 6s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(-8px); } }
+  .hero-copy > * { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+  .hero-copy > :nth-child(2) { animation-delay: .06s; } .hero-copy > :nth-child(3) { animation-delay: .12s; }
+  .hero-copy > :nth-child(4) { animation-delay: .18s; } .hero-copy > :nth-child(5) { animation-delay: .24s; }
+  .devices { animation: rise 1s .15s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes rise { from { transform: translateY(18px); } }
+}
+
+/* --- Liczby */
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; padding-block: 3.2rem; }
+.stat { border-top: 2px solid var(--ink); padding-top: 1rem; min-width: 0; }
+.stat b { display: block; font: 800 clamp(2rem, 3.6vw, 2.8rem)/1 var(--display); letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+.stat b small { font-size: .45em; letter-spacing: 0; color: var(--moss); margin-left: .15rem; }
+.stat span { display: block; margin-top: .5rem; color: var(--muted); font-size: .95rem; }
+
+/* --- Spis treści przyklejony */
+.toc-bar { position: sticky; top: 0; z-index: 20; background: rgba(237,241,238,.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color .2s; }
+.toc-bar.stuck { border-color: var(--stone); }
+.toc { display: flex; gap: .3rem; overflow-x: auto; scrollbar-width: none; padding-block: .7rem; }
+.toc::-webkit-scrollbar { display: none; }
+.toc a { flex: none; display: inline-flex; align-items: center; gap: .45rem; text-decoration: none; font-weight: 600; font-size: .9rem; padding: .45rem .85rem; border-radius: 999px; color: var(--ink-soft); transition: background .2s, color .2s; }
+.toc a .ico { width: 1rem; height: 1rem; color: var(--moss); }
+.toc a:hover { background: var(--paper); }
+.toc a.active { background: var(--forest); color: #fff; }
+.toc a.active .ico { color: var(--mint); }
+.read-progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 30; background: var(--signal); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
+
+/* --- Dlaczego my: tabela „dziś / u Was” zamiast kart */
+.why { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 3rem; align-items: start; }
+.why .lead { margin-top: 1.2rem; }
+.compare { border-top: 2px solid var(--ink); }
+.compare-head, .compare-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; }
+.compare-head { padding-block: .8rem; }
+.compare-head span { font: 700 .74rem var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.compare-head span + span { color: var(--moss); }
+.compare-row { padding-block: 1rem; border-top: 1px solid var(--stone); }
+.compare-row .was { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(102,115,108,.45); text-decoration-thickness: 1px; }
+.compare-row .now { display: flex; gap: .6rem; }
+.compare-row .now .ico { color: var(--moss); margin-top: .2rem; }
+.compare-row .now b { color: var(--ink); }
+
+.team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; margin-top: 3.5rem; }
+.person { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.2rem; align-items: start; background: var(--paper); border-radius: var(--r-lg); padding: 1.5rem; }
+.person img { width: 5rem; height: 5rem; border-radius: 18px; object-fit: cover; }
+.person img.small { image-rendering: auto; }
+.person .role { font: 700 .72rem var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--moss); }
+.person h3 { margin-top: .25rem; font-size: 1.25rem; }
+.person p { color: var(--ink-soft); font-size: .97rem; margin-top: .4rem; }
+.person .tel { display: inline-flex; align-items: center; gap: .4rem; margin-top: .7rem; font: 700 .9rem var(--body); text-decoration: none; color: var(--moss); }
+.person .tel .ico { width: 1rem; height: 1rem; }
+
+/* --- Synchronizacja (ciemny pas) */
+.band { padding-block: 5.5rem; margin-top: 6rem; }
+.sync { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 3rem; align-items: center; }
+.sync h2 { margin-top: .8rem; }
+.sync-list { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: .1rem; }
+.sync-list li { display: flex; gap: .8rem; align-items: center; padding-block: .65rem; border-top: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.86); }
+.sync-list .ico { color: var(--mint); }
+.flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 1rem; align-items: center; }
+.mock { background: var(--paper); color: var(--ink); border-radius: var(--r); overflow: hidden; box-shadow: 0 30px 60px -30px rgba(0,0,0,.7); min-width: 0; }
+.mock-top { padding: .55rem .8rem; background: var(--stone); font: 700 .68rem var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.mock-body { padding: .9rem 1rem 1.1rem; display: grid; gap: .4rem; }
+.mock-body strong { font: 700 1.05rem var(--display); }
+.mock-body small { color: var(--muted); font-size: .8rem; }
+.price-field { display: flex; justify-content: space-between; align-items: center; border: 2px solid var(--signal); border-radius: 10px; padding: .4rem .65rem; font: 600 1rem var(--mono); font-variant-numeric: tabular-nums; }
+.price-field small { font-size: .72rem; }
+.site-price { font: 700 .95rem var(--body); color: var(--moss); font-variant-numeric: tabular-nums; border-radius: 6px; }
+.free-chip { justify-self: start; font: 700 .66rem var(--body); letter-spacing: .05em; text-transform: uppercase; background: #dff1e6; color: var(--moss); border-radius: 99px; padding: .2rem .55rem; }
+.flow-arrow { width: 2.8rem; height: 2.8rem; border-radius: 50%; display: grid; place-items: center; background: var(--signal); color: var(--signal-ink); }
+.flow-note { margin-top: 1rem; font-size: .8rem; color: rgba(255,255,255,.5); }
+@media (prefers-reduced-motion: no-preference) {
+  .flow-arrow.spin svg { animation: spin-once 1s cubic-bezier(.4,.1,.2,1); }
+  @keyframes spin-once { to { transform: rotate(360deg); } }
+  .flash { animation: flash 1.2s ease; }
+  @keyframes flash { 30% { background: rgba(240,178,60,.3); } }
+}
+
+/* --- Panel: ekrany i lista funkcji */
+.panel-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: end; }
+.shots { margin-top: 2.4rem; display: grid; grid-template-columns: minmax(0, 1fr) 14.5rem; gap: 1.5rem; align-items: start; }
+.tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+.tabs button { font: 600 .9rem var(--body); padding: .5rem 1rem; border-radius: 999px; border: 0; background: var(--paper); color: var(--ink-soft); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--forest); color: #fff; }
+.screen { background: var(--paper); border-radius: var(--r-lg); padding: .5rem; box-shadow: 0 40px 80px -50px rgba(20,32,25,.6); }
+.screen img { border-radius: 16px; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; width: 100%; }
+.shot-cap { margin-top: .9rem; color: var(--ink-soft); font-size: .95rem; min-height: 2.8em; }
+.phone-solo { border-radius: 2rem; padding: .45rem; background: var(--forest); box-shadow: 0 30px 60px -30px rgba(20,32,25,.7); }
+.phone-solo img { border-radius: 1.6rem; width: 100%; }
+.phone-cap { text-align: center; color: var(--muted); font-size: .85rem; margin-top: .8rem; }
+.sample { font-size: .8rem; color: var(--muted); margin-top: .4rem; }
+
+.feats { margin-top: 3.5rem; display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 3 * 1rem) / 4); gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; cursor: grab; user-select: none; -webkit-user-select: none; padding-bottom: .4rem; }
+.feats::-webkit-scrollbar { display: none; }
+.feats.dragging { cursor: grabbing; scroll-snap-type: none; }
+.feat { scroll-snap-align: start; border-top: 2px solid var(--ink); padding-top: 1rem; min-width: 0; }
+.feat .n { font: 700 .72rem var(--body); color: var(--moss); letter-spacing: .06em; }
+.feat h3 { margin-top: .5rem; display: flex; align-items: center; gap: .5rem; }
+.feat h3 .ico { color: var(--moss); }
+.feat p { color: var(--ink-soft); font-size: .93rem; line-height: 1.5; margin-top: .4rem; }
+.feats-nav { display: flex; align-items: center; gap: 1rem; margin-top: 1.4rem; }
+.feats-bar { flex: 1; height: 3px; background: var(--stone); border-radius: 99px; overflow: hidden; }
+.feats-bar span { display: block; height: 100%; width: 25%; background: var(--ink); border-radius: 99px; transition: transform .25s ease, width .25s ease; }
+.feats-count { font: 700 .82rem var(--body); color: var(--muted); min-width: 3.5rem; text-align: right; font-variant-numeric: tabular-nums; }
+.car-btn { flex: none; margin: 0; padding: 0; width: 2.8rem; height: 2.8rem; border-radius: 50%; display: grid; place-items: center; background: var(--paper); border: 0; box-shadow: inset 0 0 0 1px #c6d0ca; color: var(--ink); cursor: pointer; transition: box-shadow .2s, color .2s; }
+.car-btn:hover { box-shadow: inset 0 0 0 1px var(--moss); color: var(--moss); }
+.car-btn svg { width: 1.1rem; height: 1.1rem; }
+.car-btn.car-prev svg { transform: rotate(180deg); }
+
+/* --- Zakres: arkusz w czterech kolumnach */
+.spec { margin-top: 2.4rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: var(--paper); border-radius: var(--r-lg); overflow: hidden; }
+.spec > div { padding: 1.6rem 1.4rem 1.8rem; border-left: 1px solid var(--stone); min-width: 0; }
+.spec > div:first-child { border-left: 0; }
+.spec .ico { color: var(--moss); width: 1.6rem; height: 1.6rem; }
+.spec h3 { margin-top: .9rem; }
+.ticks { list-style: none; margin: .9rem 0 0; padding: 0; display: grid; gap: .55rem; }
+.ticks li { display: grid; grid-template-columns: .9rem minmax(0, 1fr); gap: .55rem; font-size: .94rem; color: var(--ink-soft); line-height: 1.45; }
+.ticks li::before { content: ""; width: .5rem; height: .5rem; margin-top: .45rem; border-radius: 2px; background: var(--moss); transform: rotate(45deg); }
+.dark .ticks li { color: rgba(255,255,255,.85); }
+.dark .ticks li::before { background: var(--mint); }
+
+/* --- Materiały */
+.materials { margin-top: 2.4rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; align-items: center; }
+.form-mock { background: var(--paper); border-radius: var(--r-lg); padding: 1.4rem; display: grid; gap: .2rem; box-shadow: 0 40px 80px -50px rgba(20,32,25,.5); min-width: 0; }
+.form-mock header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: .7rem; }
+.form-mock header small { font: 700 .74rem var(--body); color: var(--muted); }
+.progress { height: 6px; border-radius: 99px; background: var(--stone); overflow: hidden; margin-bottom: .6rem; }
+.progress span { display: block; height: 100%; width: 62%; background: var(--moss); border-radius: 99px; }
+.row { display: grid; grid-template-columns: 1.3rem minmax(0, 1fr) auto; gap: .8rem; align-items: center; padding: .7rem .1rem; border-top: 1px solid var(--stone); font-size: .95rem; }
+.row .ico { color: var(--moss); width: 1.1rem; height: 1.1rem; }
+.st { font: 700 .66rem var(--body); letter-spacing: .05em; text-transform: uppercase; padding: .25rem .6rem; border-radius: 99px; white-space: nowrap; }
+.st.ok { background: #dff1e6; color: var(--moss); }
+.st.wait { background: #fbeccd; color: #6b4b0c; }
+.st.todo { box-shadow: inset 0 0 0 1px #c6d0ca; color: var(--muted); }
+.how { display: grid; gap: 1.6rem; min-width: 0; }
+.how-item { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 1rem; }
+.how-item .k { width: 2.6rem; height: 2.6rem; border-radius: 12px; background: var(--paper); display: grid; place-items: center; color: var(--moss); }
+.how-item p { color: var(--ink-soft); font-size: .97rem; margin-top: .25rem; }
+
+/* --- Harmonogram jako droga */
+.road { margin-top: 3rem; position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; list-style: none; padding: 0; }
+.road::before { content: ""; position: absolute; left: 0; right: 0; top: 1.15rem; height: 2.3rem; border-radius: 99px; background: var(--forest); }
+.road::after { content: ""; position: absolute; left: 1.2rem; right: 1.2rem; top: 2.25rem; height: 3px; background: repeating-linear-gradient(90deg, var(--signal) 0 22px, transparent 22px 40px); transform-origin: 0 50%; }
+.stop { position: relative; display: grid; gap: .9rem; align-content: start; min-width: 0; }
+.stop .post { position: relative; z-index: 1; justify-self: start; margin-left: .6rem; display: grid; place-items: center; width: 4.6rem; height: 4.6rem; }
+.stop .sign { width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--paper); color: var(--forest); display: grid; place-items: center; box-shadow: 0 0 0 4px var(--forest), 0 0 0 6px var(--signal); }
+.stop .sign .ico { width: 1.2rem; height: 1.2rem; }
+.stop .when { font: 700 .74rem var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--moss); }
+.stop h3 { margin-top: -.3rem; }
+.stop p { color: var(--ink-soft); font-size: .93rem; line-height: 1.5; }
+.who-does { display: flex; flex-wrap: wrap; gap: .3rem; }
+.tag { font: 700 .64rem var(--body); letter-spacing: .04em; text-transform: uppercase; padding: .25rem .55rem; border-radius: 99px; background: #dff1e6; color: var(--moss); }
+.tag.you { background: #fbeccd; color: #6b4b0c; }
+.notes { margin-top: 2.4rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.note { display: grid; grid-template-columns: 1.3rem minmax(0, 1fr); gap: .8rem; background: var(--paper); border-radius: var(--r); padding: 1.1rem 1.25rem; color: var(--ink-soft); font-size: .95rem; }
+.note .ico { color: var(--moss); margin-top: .15rem; }
+.note b { color: var(--ink); }
+@media (prefers-reduced-motion: no-preference) {
+  .js .road::after { transform: scaleX(0); transition: transform 1.8s cubic-bezier(.4,.1,.2,1) .2s; }
+  .js .road.in::after { transform: none; }
+}
+
+/* --- Cena */
+.prices { margin-top: 2.4rem; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 1.2rem; align-items: stretch; }
+.variant { position: relative; border-radius: var(--r-lg); padding: 2rem; display: grid; gap: 1.1rem; align-content: start; background: var(--paper); min-width: 0; }
+.variant.chosen { background: var(--forest); color: #fff; }
+.variant .ribbon { justify-self: start; background: var(--signal); color: var(--signal-ink); font: 700 .7rem var(--body); letter-spacing: .06em; text-transform: uppercase; padding: .35rem .75rem; border-radius: 999px; }
+.variant .label { margin-top: -.3rem; }
+.variant h3 { font-size: 1.45rem; }
+.variant .sub { color: var(--muted); font-size: .97rem; }
+.variant.chosen .sub { color: rgba(255,255,255,.72); }
+.variant.chosen .label { color: var(--mint); }
+.variant.chosen .ticks li { color: rgba(255,255,255,.86); }
+.variant.chosen .ticks li::before { background: var(--mint); }
+.money { display: grid; gap: .6rem; padding-block: 1rem; border-block: 1px solid var(--stone); }
+.variant.chosen .money { border-color: rgba(255,255,255,.14); }
+.money-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.money-row span { color: var(--muted); font-size: .95rem; }
+.variant.chosen .money-row span { color: rgba(255,255,255,.7); }
+.money-row b { font: 800 2.3rem/1 var(--display); letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+.money-row b small { font: 600 .85rem var(--body); letter-spacing: 0; opacity: .7; margin-left: .2rem; }
+.per-day { font: 700 .8rem var(--body); color: var(--moss); margin-top: -.3rem; }
+.variant.chosen .per-day { color: var(--mint); }
+.free { justify-self: start; background: #dff1e6; color: var(--moss); font: 700 .7rem var(--body); letter-spacing: .05em; text-transform: uppercase; padding: .3rem .7rem; border-radius: 999px; }
+.terms { margin-top: 1.2rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.2rem; }
+.terms > div { background: var(--paper); border-radius: var(--r); padding: 1.3rem 1.4rem; min-width: 0; }
+.terms h3 { font-size: 1.02rem; }
+.terms p, .terms li { color: var(--ink-soft); font-size: .95rem; }
+.terms p { margin-top: .4rem; }
+.terms ul { margin: .5rem 0 0; padding-left: 1.1rem; display: grid; gap: .3rem; }
+.outside { margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+.outside span { display: inline-flex; align-items: center; gap: .45rem; padding: .5rem .85rem; border-radius: 999px; box-shadow: inset 0 0 0 1px #c6d0ca; font-size: .88rem; color: var(--ink-soft); }
+.outside span b { color: var(--ink); font-weight: 700; }
+.outside .ico { width: 1rem; height: 1rem; color: var(--muted); }
+
+.fine { list-style: none; margin: 1.6rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; }
+.fine li { display: flex; align-items: center; gap: .5rem; font-size: .95rem; color: var(--ink); }
+.fine li::before { content: ""; width: .45rem; height: .45rem; border-radius: 2px; background: var(--moss); transform: rotate(45deg); }
+.aside { margin-top: 1rem; color: var(--muted); font-size: .92rem; max-width: 60rem; }
+
+/* --- Demo */
+.demo { margin-top: 6rem; background: var(--signal); color: var(--signal-ink); }
+.demo .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem 3rem; padding-block: 3rem; }
+.demo h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+.demo p { margin-top: .6rem; max-width: 36rem; }
+.demo .btn { background: var(--forest); color: #fff; }
+.demo .btn:hover { background: var(--forest-2); transform: translateY(-2px); }
+
+/* --- FAQ */
+.faq { margin-top: 2.2rem; border-top: 2px solid var(--ink); }
+.faq details { border-bottom: 1px solid var(--stone); }
+.faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.2rem .2rem; font: 700 1.12rem/1.35 var(--display); letter-spacing: -.01em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; background: var(--paper); color: var(--ink); font: 600 1.15rem var(--body); transition: transform .25s ease, background .2s; }
+.faq details[open] summary::after { transform: rotate(45deg); background: var(--signal); }
+.faq details p { padding: 0 3rem 1.3rem .2rem; color: var(--ink-soft); max-width: 60rem; overflow: hidden; }
+
+/* --- Co dalej i kontakt */
+.next { margin-top: 2.2rem; list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; counter-reset: krok; }
+.next li { border-top: 2px solid var(--ink); padding-top: 1rem; color: var(--ink-soft); min-width: 0; }
+.next li::before { counter-increment: krok; content: "Krok " counter(krok); display: block; font: 700 .74rem var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--moss); margin-bottom: .4rem; }
+.contact { margin-top: 3rem; border-radius: var(--r-lg); padding: clamp(1.6rem, 4vw, 2.6rem); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: center; position: relative; overflow: hidden; }
+.contact::before { content: ""; position: absolute; inset: 0; background: radial-gradient(50% 80% at 100% 0%, rgba(159,224,185,.18), transparent 70%); pointer-events: none; }
+.contact > * { position: relative; }
+.contact h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); margin-top: .6rem; }
+.contact p { color: rgba(255,255,255,.78); margin-top: .6rem; max-width: 34rem; }
+.contact .who { display: flex; align-items: center; gap: .9rem; margin-top: 1.4rem; }
+.contact .who img { width: 3.4rem; height: 3.4rem; border-radius: 14px; object-fit: cover; }
+.contact .who b { display: block; }
+.contact .who .num { font: 600 1.05rem var(--mono); color: var(--mint); user-select: all; }
+.actions { display: grid; gap: .6rem; min-width: 15rem; }
+.actions .btn { justify-content: center; }
+footer { margin-top: 5rem; padding-block: 2rem; font-size: .9rem; color: var(--muted); border-top: 1px solid var(--stone); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; }
+footer b { color: var(--ink); }
+.wa-float { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 40; display: inline-flex; align-items: center; gap: .5rem; padding: .8rem 1.1rem; border-radius: 999px; background: var(--wa); color: #08321a; font-weight: 700; text-decoration: none; box-shadow: 0 16px 34px -14px rgba(0,0,0,.45); transform: translateY(160%); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.wa-float .ico { width: 1.2rem; height: 1.2rem; }
+.wa-float.show { transform: none; }
+
+/* Wjeżdżanie elementów przy przewijaniu (tylko poniżej pierwszego ekranu, z zabezpieczeniem) */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .8s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
+  .js .reveal.in { opacity: 1; transform: none; }
+}
+
+@media (max-width: 62rem) {
+  .hero-grid, .why, .sync, .materials { grid-template-columns: 1fr; }
+  .devices { max-width: 40rem; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spec { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spec > div:nth-child(3) { border-left: 0; }
+  .spec > div:nth-child(n+3) { border-top: 1px solid var(--stone); }
+  .feats { grid-auto-columns: calc((100% - 1rem) / 2); }
+  .road { grid-template-columns: 1fr; gap: 0; }
+  .road::before { left: 1.15rem; right: auto; top: 0; bottom: 0; width: 2.3rem; height: auto; }
+  .road::after { left: 2.2rem; right: auto; top: 1rem; bottom: 1rem; width: 3px; height: auto; background: repeating-linear-gradient(180deg, var(--signal) 0 22px, transparent 22px 40px); transform-origin: 50% 0; }
+  .stop { grid-template-columns: 4.6rem minmax(0, 1fr); column-gap: 1rem; row-gap: .5rem; padding-bottom: 2rem; }
+  .stop .post { margin-left: 0; grid-row: 1 / span 4; }
+  .prices, .terms, .notes { grid-template-columns: 1fr; }
+  .contact { grid-template-columns: 1fr; }
+  .actions { min-width: 0; }
+  .shots { grid-template-columns: 1fr; }
+  .phone-solo { max-width: 15rem; justify-self: center; }
+}
+@media (prefers-reduced-motion: no-preference) and (max-width: 62rem) {
+  .js .road::after { transform: scaleY(0); }
+}
+@media (max-width: 40rem) {
+  section.block { padding-top: 4.5rem; }
+  .compare-head { display: none; }
+  .compare-row { grid-template-columns: 1fr; gap: .3rem; }
+  .team, .next { grid-template-columns: 1fr; }
+  .feats { grid-auto-columns: 82%; }
+  .spec { grid-template-columns: 1fr; }
+  .spec > div { border-left: 0; border-top: 1px solid var(--stone); }
+  .spec > div:first-child { border-top: 0; }
+  .flow { grid-template-columns: 1fr; }
+  .flow-arrow { justify-self: center; transform: rotate(90deg); }
+  .float.push { left: 0; top: -2%; }
+  .faq details p { padding-right: .2rem; }
+}
+@media print { .js .reveal { opacity: 1 !important; transform: none !important; } .wa-float, .read-progress { display: none; } }
+/* --- Strona + CRM: argumenty i porównanie */
+.pitch-band { padding-block: 5.5rem; margin-top: 0; position: relative; overflow: hidden; }
+.pitch-band::before { content: ""; position: absolute; inset: 0; background: radial-gradient(40% 60% at 90% 20%, rgba(240,178,60,.14), transparent 70%), radial-gradient(40% 60% at 10% 100%, rgba(159,224,185,.12), transparent 70%); pointer-events: none; }
+.pitch-band .wrap { position: relative; }
+.pitch { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3.5rem; align-items: center; }
+.pitch h2 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); }
+.pitch .hl { color: var(--signal); }
+.pitch .lead { margin-top: 1.3rem; }
+.site-mock { margin: 0; position: relative; background: var(--paper); color: var(--ink); border-radius: var(--r-lg); box-shadow: 0 40px 80px -30px rgba(0,0,0,.7); transform: rotate(-1.5deg); }
+.site-mock .bar { display: flex; align-items: center; gap: .4rem; padding: .7rem .9rem; border-bottom: 1px solid var(--stone); }
+.site-mock .bar i { width: .6rem; height: .6rem; border-radius: 50%; background: var(--stone); }
+.site-mock .url { margin-left: .6rem; display: inline-flex; align-items: center; gap: .4rem; background: var(--mist); border-radius: 999px; padding: .3rem .8rem; font-size: .82rem; font-weight: 600; color: var(--moss); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.site-mock .url .ico { width: .9rem; height: .9rem; flex: none; }
+.site-body { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 1.2rem; padding: 1.2rem; }
+.car-visual { border-radius: 14px; background: linear-gradient(160deg, #dfe8e2, #c9d6ce); display: grid; place-items: center; min-height: 11rem; color: var(--forest); }
+.car-visual .ico { width: 5rem; height: 5rem; opacity: .75; }
+.car-info { display: grid; gap: .45rem; align-content: start; min-width: 0; }
+.car-info small { color: var(--muted); font-size: .78rem; }
+.car-info strong { font-size: 1.35rem; letter-spacing: -.01em; }
+.car-info .dates { font-size: .88rem; color: var(--ink-soft); }
+.price-line { display: flex; justify-content: space-between; align-items: baseline; gap: .6rem; padding-block: .5rem; border-block: 1px solid var(--stone); }
+.price-line span { font-size: .8rem; color: var(--muted); }
+.price-line b { font-size: 1.2rem; font-variant-numeric: tabular-nums; }
+.avail { display: inline-flex; align-items: center; gap: .4rem; font-size: .8rem; font-weight: 700; color: var(--moss); }
+.avail::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: #3fbf6f; }
+.book { justify-self: start; margin-top: .2rem; background: var(--signal); color: var(--signal-ink); font-weight: 700; font-size: .9rem; padding: .55rem 1.1rem; border-radius: 999px; }
+.mock-chip { position: absolute; right: -1rem; top: -1.1rem; display: inline-flex; align-items: center; gap: .45rem; background: var(--forest); color: var(--mint); font-size: .82rem; font-weight: 700; padding: .55rem .85rem; border-radius: 999px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.6); transform: rotate(1.5deg); }
+.mock-chip .ico { width: 1rem; height: 1rem; }
+.site-mock figcaption { padding: 0 1.2rem 1rem; font-size: .75rem; color: var(--muted); }
+.reasons { margin-top: 4rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; }
+.reason { border-top: 1px solid rgba(255,255,255,.16); padding-top: 1.3rem; min-width: 0; }
+.reason .k { width: 2.8rem; height: 2.8rem; border-radius: 12px; display: grid; place-items: center; background: rgba(159,224,185,.14); color: var(--mint); }
+.reason .k .ico { width: 1.35rem; height: 1.35rem; }
+.reason h3 { margin-top: 1rem; color: #fff; }
+.reason p { color: rgba(255,255,255,.72); font-size: .95rem; margin-top: .45rem; }
+.vs { margin-top: 2rem; background: var(--paper); border-radius: var(--r-lg); overflow: hidden; }
+.vs-row { display: grid; grid-template-columns: minmax(0, 1fr) 11rem 11rem; align-items: center; border-top: 1px solid var(--stone); }
+.vs-row > span { padding: .9rem 1.2rem; }
+.vs-row > span + span { text-align: center; }
+.vs-row > span:last-child { background: #e6f3eb; }
+.vs-head { border-top: 0; font-weight: 700; }
+.vs-head > span:last-child { background: var(--forest); color: #fff; }
+.vs-head small { display: block; font-weight: 500; font-size: .78rem; opacity: .7; }
+.yes { color: var(--forest); font-weight: 800; font-size: 1.15rem; }
+.no { color: #a7b2ab; font-weight: 700; }
+.vs-note { margin-top: 1.2rem; color: var(--ink-soft); max-width: 52rem; }
+.vs-note b { color: var(--ink); }
+@media (max-width: 62rem) { .pitch { grid-template-columns: 1fr; } .reasons { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 40rem) { .reasons { grid-template-columns: 1fr; } .site-body { grid-template-columns: 1fr; } .car-visual { min-height: 8rem; } .mock-chip { right: .5rem; } }
+@media (max-width: 40rem) { .vs-row { grid-template-columns: minmax(0, 1fr) 4.6rem 4.6rem; font-size: .9rem; } .vs-row > span { padding: .8rem .7rem; } }
+/* --- Runda 15.10: nowa komunikacja sprzedażowa */
+:root { --cream: #f4eee0; --cream-2: #ebe3d0; --sage: #e1eae4; }
+[data-v="1"] .only-2, [data-v="2"] .only-1 { display: none !important; }
+.hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.7rem); line-height: 1.04; }
+.hero .lead-2 { margin-top: .9rem; font-size: 1.05rem; color: rgba(255,255,255,.78); }
+.hero .lead-2 b { color: #fff; }
+.btn.big { padding: 1.05rem 1.6rem; font-size: 1.05rem; }
+.btn.line { box-shadow: inset 0 0 0 2px rgba(255,255,255,.55); }
+.hero-cta { gap: .8rem; }
+.float.push { left: -2%; top: auto; bottom: -.4rem; max-width: 20rem; padding: .85rem 1rem; gap: .8rem; border-radius: 18px; box-shadow: 0 0 0 3px var(--mint), 0 24px 50px -18px rgba(0,0,0,.7); font-size: .88rem; line-height: 1.35; align-items: flex-start; }
+.float.push b { font-size: 1.02rem; margin-bottom: .15rem; }
+.float.push .dot { width: 2.6rem; height: 2.6rem; border-radius: 12px; }
+.float.push .dot .ico { width: 1.4rem; height: 1.4rem; }
+.devices { padding-bottom: 3.5rem; }
+.h-long { font-size: clamp(1.7rem, 3.3vw, 2.6rem); line-height: 1.1; max-width: 56rem; }
+.lead { max-width: 46rem; }
+h2 + .lead { margin-top: 1.1rem; }
+.lead.lead-strong { color: #fff; font-weight: 700; }
+.spec-lead { margin-top: 1rem; }
+
+/* Spis treści: wyraźne przyciski, bez ucięcia ostatniego */
+.toc { gap: .4rem; padding-block: .6rem; justify-content: space-between; }
+.toc a { background: var(--paper); box-shadow: inset 0 0 0 1px #c6d0ca; padding: .5rem .85rem; font-weight: 700; color: var(--ink); }
+.toc a:hover { box-shadow: inset 0 0 0 1px var(--moss); }
+.toc a.active { background: var(--moss); color: #fff; box-shadow: none; }
+.toc a.active .ico { color: #fff; }
+.toc-bar.more::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 3.2rem; background: linear-gradient(90deg, rgba(237,241,238,0), rgba(237,241,238,.98) 70%); pointer-events: none; }
+.tabs button[aria-selected="true"] { background: var(--moss); }
+.vs-head > span:last-child { background: var(--moss); }
+.demo .btn { background: var(--paper); color: var(--ink); box-shadow: 0 14px 30px -14px rgba(58,42,6,.6); }
+.demo .btn:hover { background: #fff; transform: translateY(-2px); }
+
+/* Frustracja */
+.pains { margin-top: 2.6rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.pain { background: var(--cream); border-radius: var(--r-lg); padding: 1.5rem 1.5rem 1.7rem; min-width: 0; box-shadow: inset 0 0 0 1px var(--cream-2); }
+.pain .n { display: grid; place-items: center; width: 2.1rem; height: 2.1rem; border-radius: 50%; background: var(--moss); color: #fff; font: 800 .95rem var(--display); }
+.pain h3 { margin-top: 1rem; font-size: 1.15rem; line-height: 1.25; }
+.pain p { margin-top: .5rem; color: var(--ink-soft); font-size: .96rem; line-height: 1.55; }
+.turn { margin-top: 5rem; padding-block: 4.5rem; background: linear-gradient(180deg, var(--forest) 0%, #17241d 100%); position: relative; }
+.turn::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 8px; background: repeating-linear-gradient(90deg, var(--signal) 0 22px, transparent 22px 40px); opacity: .85; }
+.turn-line { font: 800 clamp(1.7rem, 3.6vw, 2.8rem)/1.12 var(--display); letter-spacing: -.02em; margin-top: .9rem; max-width: 52rem; text-wrap: balance; }
+.turn-arrow { width: 2.4rem; height: 2.4rem; margin-top: 1.6rem; color: var(--signal); transform: rotate(90deg); }
+
+/* Wybór wariantu */
+.choose { margin-top: 2.6rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; align-items: stretch; }
+.choice { position: relative; display: flex; flex-direction: column; gap: .8rem; background: var(--cream); border-radius: var(--r-lg); padding: 2rem; min-width: 0; cursor: pointer; box-shadow: inset 0 0 0 2px transparent; transition: box-shadow .2s, background .2s, transform .2s; }
+.choice:hover { transform: translateY(-3px); box-shadow: inset 0 0 0 2px var(--moss); }
+.choice h3 { font-size: 1.4rem; line-height: 1.2; }
+.choice p { color: var(--ink-soft); font-size: .98rem; line-height: 1.55; }
+.choice .strong { color: var(--ink); font-weight: 800; font-size: 1.08rem; }
+.choice-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .6rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(20,32,25,.15); }
+.choice-price b { font: 800 2.6rem/1 var(--display); letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+.choice-price span { color: var(--muted); font-weight: 600; }
+.choice .choice-note { font-size: .9rem; }
+.choice .btn.pick { justify-content: center; background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 2px var(--moss); margin-top: .4rem; }
+.choice .btn.pick:hover { background: var(--moss); color: #fff; }
+.choice .ribbon { display: none; align-self: flex-start; background: var(--signal); color: var(--signal-ink); font: 700 .7rem var(--body); letter-spacing: .06em; text-transform: uppercase; padding: .35rem .75rem; border-radius: 999px; }
+.choice[aria-checked="true"] { background: var(--forest); color: #fff; box-shadow: inset 0 0 0 3px var(--signal); }
+.choice[aria-checked="true"] .ribbon { display: inline-block; }
+.choice[aria-checked="true"] .label { color: var(--mint); }
+.choice[aria-checked="true"] p { color: rgba(255,255,255,.82); }
+.choice[aria-checked="true"] .strong, .choice[aria-checked="true"] h3 { color: #fff; }
+.choice[aria-checked="true"] .choice-price { border-color: rgba(255,255,255,.18); }
+.choice[aria-checked="true"] .choice-price span { color: rgba(255,255,255,.72); }
+.choice[aria-checked="true"] .btn.pick { background: var(--signal); color: var(--signal-ink); box-shadow: none; }
+
+/* Demo: mocniej */
+.demo { margin-top: 6rem; }
+.demo h2 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); max-width: 40rem; }
+.demo p { max-width: 42rem; font-size: 1.05rem; }
+.demo .demo-note { font-size: .92rem; opacity: .85; }
+.demo .btn.big { padding: 1.2rem 1.9rem; font-size: 1.12rem; }
+.demo-2 { margin-top: 5rem; }
+.demo-2 .wrap { padding-block: 2.2rem; }
+.demo-2 h2 { font-size: clamp(1.5rem, 2.8vw, 2.1rem); }
+
+/* Co się zmienia */
+.shift { margin-top: 2.4rem; background: var(--cream); border-radius: var(--r-lg); padding: .6rem 1.4rem 1rem; border-top: 0; }
+.shift .compare-head { padding-top: 1rem; }
+.shift .compare-row { border-top-color: rgba(20,32,25,.12); }
+
+/* Dlaczego my */
+.story { display: grid; gap: 1rem; color: var(--ink-soft); }
+.story .pull { color: var(--ink); font: 700 1.25rem/1.35 var(--display); border-left: 4px solid var(--signal); padding-left: 1rem; letter-spacing: -.01em; }
+.team-lead { margin-top: 3rem; font: 700 1.1rem var(--display); }
+.team { margin-top: 1rem; }
+.person { background: var(--cream); }
+.shout { margin-top: 2.4rem; font: 800 clamp(1.5rem, 3vw, 2.3rem)/1.15 var(--display); letter-spacing: -.02em; max-width: 46rem; text-wrap: balance; }
+.together { margin-top: 2.4rem; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.2rem; align-items: start; background: var(--sage); border-radius: var(--r-lg); padding: 1.6rem 1.8rem; }
+.together .ico { width: 2rem; height: 2rem; color: var(--moss); margin-top: .15rem; }
+.together p { margin-top: .4rem; color: var(--ink-soft); }
+#panel .lead { margin-top: 1.2rem; }
+
+/* Panel: korzyść na pierwszym planie */
+.feat .n { text-transform: uppercase; }
+.feat h3 { align-items: flex-start; font-size: 1.08rem; line-height: 1.25; }
+.feat h3 .ico { margin-top: .1rem; }
+
+/* Strona + CRM */
+.pitch .lead { margin-top: 1.1rem; }
+.car-visual { padding: 0; overflow: hidden; min-height: 0; aspect-ratio: 1 / 1; background: #c9d6ce; }
+.car-visual img { width: 100%; height: 100%; object-fit: cover; }
+.reasons { margin-top: 3rem; }
+.reason h3 { font-size: 1.12rem; }
+.closer { margin-top: 3rem; font: 800 clamp(1.4rem, 2.8vw, 2.1rem)/1.15 var(--display); letter-spacing: -.02em; max-width: 48rem; color: #fff; text-wrap: balance; }
+.band.alt { background: var(--forest-2); margin-top: 0; }
+
+/* Zakres */
+.spec { background: var(--cream); }
+.spec > div { border-left-color: rgba(20,32,25,.12); }
+.spec.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.spec.three > div:nth-child(2) { border-left: 0; }
+
+/* Cena */
+.prices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.variant { background: var(--cream); box-shadow: inset 0 0 0 2px transparent; transition: background .2s; }
+.variant .label { margin-top: 0; }
+.variant h3 { font-size: 1.6rem; margin-top: -.5rem; }
+.variant .ribbon { display: none; }
+.variant.chosen { box-shadow: inset 0 0 0 3px var(--signal); }
+.variant.chosen .ribbon { display: inline-block; }
+.upgrade { display: grid; gap: .35rem; margin-top: .4rem; padding: 1rem 1.1rem; border-radius: var(--r); background: #f6e3b4; color: var(--signal-ink); border-left: 4px solid var(--signal); font-size: .96rem; line-height: 1.5; }
+.upgrade b { font-weight: 800; }
+.variant.chosen .upgrade { background: rgba(240,178,60,.22); color: #fff; }
+.upgrade span { opacity: .92; }
+.vs { background: var(--cream); }
+.vs-row { border-top-color: rgba(20,32,25,.12); }
+.vs-row > span:last-child { background: var(--sage); }
+.vs-head > span:last-child { background: var(--moss); color: #fff; }
+.no { color: #8a958e; }
+
+/* Kontakt */
+.contact .actions { min-width: 17rem; }
+.contact .who .num { text-decoration: none; }
+.contact h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.1; }
+
+@media (max-width: 62rem) {
+  .pains { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .choose, .prices { grid-template-columns: 1fr; }
+  .float.push { left: 0; }
+  .spec.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spec.three > div:nth-child(2) { border-left: 1px solid var(--stone); }
+  .spec.three > div:nth-child(3) { border-left: 0; border-top: 1px solid var(--stone); }
+}
+@media (max-width: 40rem) {
+  .pains { grid-template-columns: 1fr; }
+  .choice { padding: 1.5rem; }
+  .float.push { position: relative; left: auto; bottom: auto; margin: 1.2rem 0 0; max-width: none; }
+  .spec.three { grid-template-columns: 1fr; }
+  .spec.three > div, .spec.three > div:nth-child(2), .spec.three > div:nth-child(3) { border-left: 0; border-top: 1px solid var(--stone); }
+  .spec.three > div:first-child { border-top: 0; }
+  .together { grid-template-columns: 1fr; }
+  .hero-cta .btn { width: 100%; justify-content: center; }
+  .shift { padding-inline: 1rem; }
+  .toc { justify-content: flex-start; }
+}
+/* Runda Mikołaja 15.10 wieczorem */
+.hero h1 { margin-top: 1.2rem; }
+.hero .lead { margin-top: 1.8rem; }
+.hero .lead-2 { margin-top: 1rem; font-size: 1.15rem; }
+.hero-cta { margin-top: 2.6rem; }
+.float.push { left: 2%; bottom: -1rem; max-width: 15rem; padding: .6rem .8rem; gap: .6rem; align-items: center; border-radius: 14px; box-shadow: 0 0 0 2px var(--mint), 0 18px 40px -18px rgba(0,0,0,.7); }
+.float.push b { font-size: .92rem; margin: 0; }
+.float.push .dot { width: 2.1rem; height: 2.1rem; border-radius: 10px; }
+.float.push .dot .ico { width: 1.15rem; height: 1.15rem; }
+.turn-line .accent { color: #f0b48f; }
+.pain .n { width: 3rem; height: 3rem; border-radius: 14px; background: var(--forest); color: var(--mint); }
+.pain .n .ico { width: 1.45rem; height: 1.45rem; }
+.shift { border-top: 0; border-radius: var(--r-lg); overflow: hidden; background: var(--paper); box-shadow: 0 10px 24px -16px rgba(23,23,22,.35); padding: 0; }
+.shift .compare-head { padding: 1rem 1.4rem; background: var(--forest); }
+.shift .compare-head span { font-size: .82rem; color: rgba(255,255,255,.7); }
+.shift .compare-head span + span { color: var(--mint); }
+.shift .compare-row { padding: 1rem 1.4rem; }
+.shift .compare-row .was { color: #55605a; }
+.keys { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.keys li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: .8rem; row-gap: .15rem; align-items: center; background: var(--paper); border-radius: var(--r); padding: 1rem 1.1rem; }
+.keys .k { grid-row: span 2; width: 2.6rem; height: 2.6rem; border-radius: 12px; display: grid; place-items: center; background: var(--mist); color: var(--moss); }
+.keys .k .ico { width: 1.25rem; height: 1.25rem; }
+.keys b { font: 700 1.1rem var(--display); color: var(--ink); }
+.keys span:last-child { font-size: .9rem; color: var(--ink-soft); line-height: 1.4; }
+.story .pull { margin-top: .6rem; }
+.demo h2 + p { margin-top: 1rem; }
+.demo .demo-hl { font: 800 clamp(1.25rem, 2.2vw, 1.6rem)/1.25 var(--display); margin-top: 1rem; }
+@media (max-width: 40rem) {
+  .float.push { max-width: none; padding: .55rem .75rem; }
+  .keys { grid-template-columns: 1fr; }
+  .shift .compare-head { display: grid; grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-inbox" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13l2.2-7.2A2 2 0 0 1 8.1 4.5h7.8a2 2 0 0 1 1.9 1.3L20 13v5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18z"/><path d="M4 13h4.5l1.5 2.5h4l1.5-2.5H20"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3a1.5 1.5 0 0 1 0 2.1l-6.4 6.4a1.5 1.5 0 0 1-2.1 0z"/><circle cx="8" cy="8" r="1.4"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h2l1.5-2h6l1.5 2h2A1.5 1.5 0 0 1 20 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5z"/><circle cx="12" cy="13" r="3.3"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.6 3.5 5.4 3.5 8.5s-1.1 5.9-3.5 8.5c-2.4-2.6-3.5-5.4-3.5-8.5S9.6 6.1 12 3.5z"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16h14M4 13l1.8-4.3A2 2 0 0 1 7.6 7.5h8.8a2 2 0 0 1 1.8 1.2L20 13v4a1 1 0 0 1-1 1h-1M6 18H5a1 1 0 0 1-1-1v-4h16"/><circle cx="8" cy="18" r="1.6"/><circle cx="16" cy="18" r="1.6"/></symbol>
+    <symbol id="i-panel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M9 4v16M12.5 9h4.5M12.5 13h4.5M12.5 17h2.5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v5.5c0 4.3 2.9 7.6 7 9 4.1-1.4 7-4.7 7-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-sync" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 9A7.5 7.5 0 0 0 6 6.5L4.5 8M4.5 15A7.5 7.5 0 0 0 18 17.5l1.5-1.5"/><path d="M4.5 4v4h4M19.5 20v-4h-4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12.3 2.4 2.4 4.6-5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-form" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4.5h8M7 4.5H6A1.5 1.5 0 0 0 4.5 6v13A1.5 1.5 0 0 0 6 20.5h12a1.5 1.5 0 0 0 1.5-1.5V6A1.5 1.5 0 0 0 18 4.5h-1"/><rect x="8" y="3" width="8" height="3" rx="1"/><path d="m8 12 1.5 1.5L12 11M8 17l1.5 1.5L12 16M14 12.5h2.5M14 17.5h2.5"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 4.5-4.5 3.5 3.5 2.5-2.5L20 19"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 6A1.5 1.5 0 0 1 6 4.5h12A1.5 1.5 0 0 1 19.5 6v9a1.5 1.5 0 0 1-1.5 1.5H10l-4.5 3.5v-3.5H6A1.5 1.5 0 0 1 4.5 15z"/><path d="M8.5 9h7M8.5 12h4.5"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4.5h11l-2 3.5 2 3.5H5"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 4.5 19.5 8.5 9 19H5v-4z"/><path d="m13.5 6.5 4 4"/></symbol>
+    <symbol id="i-test" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3.5h6M10 3.5v5.2L4.8 17.6A2 2 0 0 0 6.5 20.5h11a2 2 0 0 0 1.7-2.9L14 8.7V3.5"/><path d="M7.5 14.5h9"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15.5 8.5 12c1.2-4.5 4.3-7.6 10-8.5-.9 5.7-4 8.8-8.5 10z"/><path d="M8.5 12 5 11.5l2.5-3.5 4 .5M12 15.5l.5 3.5 3.5-2.5-.5-4"/><path d="M6 18c-1 .5-1.5 1.5-1.5 2.5 1 0 2-.5 2.5-1.5"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18.5a4 4 0 0 1-.6-8A5.5 5.5 0 0 1 17 9.2a4.7 4.7 0 0 1 .5 9.3z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M3.5 10h17M7 15h3"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8.5v7M8.5 12h7"/></symbol>
+<symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4 4 0 0 0 4.9 4.9L20 12l-8 8a2.1 2.1 0 0 1-3-3l8-8 .6.6"/><path d="M14.5 6.5 17 4l3 3-2.5 2.5"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5 12 4l8 3.5v9L12 20l-8-3.5z"/><path d="M4 7.5 12 11l8-3.5M12 11v9"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><rect x="5.5" y="12" width="3" height="6" rx=".6"/><rect x="10.5" y="8" width="3" height="10" rx=".6"/><rect x="15.5" y="4.5" width="3" height="13.5" rx=".6"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5H7A1.5 1.5 0 0 0 5.5 5v14A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3.5V8h4.5M8.5 12.5h7M8.5 16h5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.5 14.4A4.5 4.5 0 0 1 20.5 19"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="3" width="11" height="18" rx="2.5"/><path d="M10.5 18h3"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3.5 5.5 13.5H12l-1 7 7.5-10H12z"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="5" width="15" height="10.5" rx="1.5"/><path d="M2.5 18.5h19M10 18.5h4"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19.5 5.6 16A8 8 0 1 1 8.4 18.7z"/><path d="M9.2 8.6c.2-.4.6-.5.9-.3l.9 1.4c.1.3 0 .6-.2.8l-.5.5c.4 1 1.3 1.9 2.3 2.3l.5-.5c.2-.2.5-.3.8-.2l1.4.9c.3.2.4.6.2.9-.5.9-1.5 1.3-2.4.9a8 8 0 0 1-4.3-4.3c-.3-.8 0-1.8.4-2.4z"/></symbol>
+    <symbol id="i-call" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4h3l1.5 4-2 1.5a10 10 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15.5 15.5 0 0 1 4.5 6a2 2 0 0 1 2-2z"/></symbol>
+  </defs>
+</svg>
+
+
+<header class="hero dark">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#9fe0b9"/><g fill="none" stroke="#1c2b23" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 25h22M8 22l2.6-6.2A2.6 2.6 0 0 1 13 14.2h14a2.6 2.6 0 0 1 2.4 1.6L32 22v5a1 1 0 0 1-1 1h-1.6"/><path d="M10.6 28H9a1 1 0 0 1-1-1v-5h24"/><circle cx="13.5" cy="28" r="2.2"/><circle cx="26.5" cy="28" r="2.2"/></g></svg>
+        Od wypożyczalni. Dla wypożyczalni.
+      </div>
+      <div class="meta">
+        <span class="on">Dla I Love Trips</span>
+        <span>14.10.2026</span>
+        <span>ważna do 31.10.2026</span>
+      </div>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="label">Oferta dla I Love Trips</p>
+        <h1>Wasz system powinien ułatwiać pracę. <span>Nie dokładać kolejnej.</span></h1>
+        <p class="lead">Koniec z chaosem w rezerwacjach, ręcznym sprawdzaniem dostępności i dopasowywaniem firmy do ograniczeń oprogramowania.</p>
+        <p class="lead lead-2"><b>Stworzyliśmy CRM od wypożyczalni, dla wypożyczalni.</b></p>
+        <div class="hero-cta">
+          <a class="btn signal big" href="https://twoja-wypozyczalnia-demo.vercel.app/rezerwacja" target="_blank" rel="noopener">Zobaczcie Waszą flotę w naszym systemie <svg class="ico"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+
+      <div class="devices" aria-label="Panel CRM na komputerze i telefonie">
+        <div class="laptop"><img src="panel-pulpit.webp" width="1600" height="1000" alt="Pulpit panelu: prośby do sprawdzenia, odbiory, zwroty i alerty"></div>
+        <div class="phone"><img src="panel-telefon.webp" width="560" height="1212" alt="Ten sam pulpit na telefonie"></div>
+        <div class="float push"><span class="dot"><svg class="ico"><use href="#i-phone"/></svg></span><div><b>Pełna kontrola również z telefonu</b></div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats" aria-label="Najważniejsze w skrócie">
+    <div class="stat"><b>12</b><span>modułów w jednym panelu, od kalendarza po finanse</span></div>
+    <div class="stat"><b>0<small>€</small></b><span>opłaty za uruchomienie w wariancie CRM</span></div>
+    <div class="stat"><b>59<small>€ / mies.</small></b><span>CRM, pierwszy miesiąc gratis</span></div>
+    <div class="stat"><b>79<small>€ / mies.</small></b><span>strona + CRM, plus 1500 € jednorazowo</span></div>
+  </div>
+</div>
+
+<div class="toc-bar">
+  <nav class="wrap toc" aria-label="Spis treści">
+    <a href="#problemy"><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg>Problemy</a>
+    <a href="#rozwiazania"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Wybór</a>
+    <a href="#demo"><svg class="ico" aria-hidden="true"><use href="#i-laptop"/></svg>Demo</a>
+    <a href="#dlaczego"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg>Dlaczego my</a>
+    <a href="#panel"><svg class="ico" aria-hidden="true"><use href="#i-panel"/></svg>Panel</a>
+    <a href="#strona"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg>Strona</a>
+    <a href="#zakres"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>Zakres</a>
+    <a href="#cena"><svg class="ico" aria-hidden="true"><use href="#i-tag"/></svg>Cena</a>
+    <a href="#kontakt"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Kontakt</a>
+  </nav>
+</div>
+
+<main>
+  <!-- 2. Frustracja -->
+  <section class="block wrap" id="problemy">
+    <p class="label">Znacie to?</p>
+    <h2 class="h-long" style="margin-top:.8rem">Ile razy dziennie Wasz system podaje Wam rozwiązania połowicznie? Płacicie za coś, co i tak nie jest w pełni funkcjonalne.</h2>
+    <p class="lead">A przecież nie prosicie o nic nadzwyczajnego. Chcecie po prostu sprawnie prowadzić wypożyczalnię.</p>
+    <div class="pains">
+      <article class="pain"><span class="n"><svg class="ico"><use href="#i-inbox"/></svg></span><h3>Rezerwacje wszędzie, tylko nie tam, gdzie trzeba.</h3><p>Mail, WhatsApp, telefon, formularz. Każda nowa rezerwacja to kolejne sprawdzanie i przepisywanie informacji.</p></article>
+      <article class="pain"><span class="n"><svg class="ico"><use href="#i-cal"/></svg></span><h3>Kalendarz mówi jedno, system drugie.</h3><p>Sprawdzacie dostępność kilka razy, bo nie macie pewności, czy samochód rzeczywiście jest wolny.</p></article>
+      <article class="pain"><span class="n"><svg class="ico"><use href="#i-sync"/></svg></span><h3>Jedna zmiana, kilka razy ta sama robota.</h3><p>Nowa cena, wycofane auto, dodatkowe wyposażenie? Zamiast jednej aktualizacji poprawiacie wszystko w kilku miejscach i prosicie kogoś o zmiany mailem. A gdyby dało się to zrobić samemu, kiedy tylko wpadniecie na pomysł, bez czekania na odpowiedź?</p></article>
+      <article class="pain"><span class="n"><svg class="ico"><use href="#i-wrench"/></svg></span><h3>Auto wróciło z problemem. I co dalej?</h3><p>Kto ma je sprawdzić? Czy mechanik wie? Czy samochód powinien być dostępny do kolejnego wynajmu? Alerty dla każdej osoby funkcyjnej ułatwiają komunikację.</p></article>
+      <article class="pain"><span class="n"><svg class="ico"><use href="#i-doc"/></svg></span><h3>Płacicie za system, a nadal pracujecie ręcznie.</h3><p>Kolejne obejścia, notatki i aplikacje, bo podstawowych procesów nie da się wygodnie obsłużyć. System staje się tylko Waszym kalendarzem.</p></article>
+      <article class="pain"><span class="n"><svg class="ico"><use href="#i-bolt"/></svg></span><h3>Chcecie coś zmienić? „Niestety, nie ma takiej funkcji”.</h3><p>Wasza firma musi dostosować się do programu, zamiast programu do Waszej firmy.</p></article>
+    </div>
+  </section>
+
+  <div class="turn dark">
+    <div class="wrap">
+      <p class="label">Tak może to wyglądać inaczej</p>
+      <p class="turn-line">To nie prowadzenie wypożyczalni powinno być prostsze. <span class="accent">To narzędzia, z których korzystacie, powinny przestać je komplikować.</span></p>
+      <svg class="ico turn-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+    </div>
+  </div>
+
+  <!-- 3. Dwa rozwiązania -->
+  <section class="block wrap" id="rozwiazania">
+    <p class="label">Dwa rozwiązania</p>
+    <h2 style="margin-top:.8rem">Nie każda wypożyczalnia potrzebuje nowej strony. Ale każda potrzebuje sprawnego systemu.</h2>
+    <p class="lead">Dlatego nie sprzedajemy wszystkim tego samego pakietu. Wybierzcie problem, który chcecie rozwiązać.</p>
+    <div class="choose" role="radiogroup" aria-label="Wybór wariantu">
+      <article class="choice" data-pick="1" role="radio" tabindex="0" aria-checked="false">
+        <span class="ribbon">Wybrany wariant</span>
+        <p class="label">Wariant 1 · CRM</p>
+        <h3>Macie dobrą stronę, ale za jej kulisami panuje chaos?</h3>
+        <p class="strong">Zostawcie stronę. Uporządkujmy całą resztę.</p>
+        <p>Dostajecie jeden panel do zarządzania rezerwacjami, kalendarzem floty, cenami, serwisem, wydaniami, zwrotami i finansami.</p>
+        <p>Moduł rezerwacji podłączamy do obecnej strony przez przycisk „Zarezerwuj”. To bezpośredni link, który przenosi klienta do prostej, spersonalizowanej oferty, o której decydujecie Wy.</p>
+        <button type="button" class="btn pick" data-pick="1">Wybieramy CRM <svg class="ico"><use href="#i-arrow"/></svg></button>
+      </article>
+      <article class="choice" data-pick="2" role="radio" tabindex="0" aria-checked="true">
+        <span class="ribbon">Wybrany wariant</span>
+        <p class="label">Wariant 2 · Strona + CRM</p>
+        <h3>Wasza strona nie sprzedaje tak, jak powinna, a system tylko dokłada pracy?</h3>
+        <p class="strong">Naprawmy oba problemy za jednym razem.</p>
+        <p>Budujemy nową stronę internetową, która jest bezpośrednio połączona z systemem rezerwacji i zarządzania wypożyczalnią. Klient sprawdza dostępność, wybiera samochód i przechodzi przez rezerwację na Waszej stronie.</p>
+        <p>Wy zarządzacie cenami, flotą, terminami i dodatkami w jednym panelu. A to wszystko bez strony zbudowanej na szablonie, z którym sami widzicie, że coś jest nie tak.</p>
+        <button type="button" class="btn pick" data-pick="2">Wybieramy stronę + CRM <svg class="ico"><use href="#i-arrow"/></svg></button>
+      </article>
+    </div>
+    <p class="aside">Wybór zapamiętujemy na czas przeglądania oferty. Zmienia on kolejne sekcje i wyróżnia pakiet w cenniku. To nie jest zamówienie, decyzję podejmujecie na końcu.</p>
+  </section>
+
+  <!-- 8. Demo wyżej (1) -->
+  <section class="demo" id="demo">
+    <div class="wrap">
+      <div>
+        <h2>Nie musicie sobie wyobrażać, jak to będzie działać. Już możecie to sprawdzić.</h2>
+        <p>Demo z samochodami I Love Trips: termin, dostępność i rezerwacja od strony klienta.</p>
+        <p class="demo-hl">Zobaczcie, jak może wyglądać panel rezerwacji.</p>
+        <p class="demo-note">Tak wygląda rezerwacja w wariancie z samym CRM. W wariancie ze stroną jest ona wbudowana w Waszą stronę.</p>
+      </div>
+      <a class="btn big" href="https://twoja-wypozyczalnia-demo.vercel.app/rezerwacja" target="_blank" rel="noopener">Otwórzcie demo z Waszą flotą <svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </section>
+
+  <!-- 4. Co się zmienia -->
+  <section class="block wrap" id="zmiana">
+    <p class="label">Co się zmienia</p>
+    <h2 style="margin-top:.8rem">Przestańcie pracować dla swojego systemu. Niech wreszcie system pracuje dla Was.</h2>
+    <div class="compare shift">
+      <div class="compare-head"><span>Dziś</span><span>Z naszym systemem</span></div>
+      <div class="compare-row"><span class="was">Ręczne sprawdzanie rezerwacji</span><span class="now"><svg class="ico"><use href="#i-inbox"/></svg><span><b>Wszystkie zgłoszenia i statusy w jednym panelu.</b></span></span></div>
+      <div class="compare-row"><span class="was">Kilka kalendarzy</span><span class="now"><svg class="ico"><use href="#i-cal"/></svg><span><b>Jeden kalendarz całej floty.</b></span></span></div>
+      <div class="compare-row"><span class="was">Przepisywanie cen i informacji</span><span class="now"><svg class="ico"><use href="#i-tag"/></svg><span><b>Jedna aktualizacja danych</b> w połączonych modułach.</span></span></div>
+      <div class="compare-row"><span class="was">Telefon do mechanika</span><span class="now"><svg class="ico"><use href="#i-wrench"/></svg><span><b>Zadania serwisowe i status samochodu</b> w systemie.</span></span></div>
+      <div class="compare-row"><span class="was">Papierowe protokoły</span><span class="now"><svg class="ico"><use href="#i-camera"/></svg><span><b>Cyfrowe wydania i zwroty ze zdjęciami.</b></span></span></div>
+      <div class="compare-row"><span class="was">Szukanie informacji po wiadomościach</span><span class="now"><svg class="ico"><use href="#i-chat"/></svg><span><b>Rezerwacja z danymi klienta i wiadomościami</b> w jednym miejscu.</span></span></div>
+      <div class="compare-row only-2"><span class="was">Osobno aktualizowana strona</span><span class="now"><svg class="ico"><use href="#i-sync"/></svg><span><b>Synchronizacja z panelem.</b></span></span></div>
+      <div class="compare-row only-2"><span class="was">Formularze oderwane od strony</span><span class="now"><svg class="ico"><use href="#i-globe"/></svg><span><b>Rezerwacja bezpośrednio na Waszej domenie.</b></span></span></div>
+      <div class="compare-row only-2"><span class="was">Przestarzała prezentacja floty</span><span class="now"><svg class="ico"><use href="#i-car"/></svg><span><b>Dedykowane podstrony samochodów,</b> dostępność i aktualne ceny.</span></span></div>
+    </div>
+    <p class="aside only-1">Wybraliście wariant z samym CRM. Pozycje dotyczące strony pokazujemy po wyborze wariantu ze stroną.</p>
+  </section>
+
+  <!-- 5. Dlaczego my -->
+  <section class="block wrap" id="dlaczego">
+    <div class="why">
+      <div>
+        <p class="label">Od wypożyczalni. Dla wypożyczalni.</p>
+        <h2 class="h-long" style="margin-top:.8rem">Większość systemów tworzą ludzie, którzy nigdy nie prowadzili wypożyczalni. My prowadzimy ją każdego dnia.</h2>
+        <p class="lead">Mierzymy się na co dzień z problemami średnich wypożyczalni. To, co budujemy, ma być intuicyjnym systemem, który pozwoli Wam po prostu działać.</p>
+      </div>
+      <div class="story">
+        <ul class="keys">
+          <li><span class="k"><svg class="ico"><use href="#i-flag"/></svg></span><b>Doświadczenie</b><span>Znamy sezon, w którym telefony nie przestają dzwonić.</span></li>
+          <li><span class="k"><svg class="ico"><use href="#i-pen"/></svg></span><b>Personalizacja</b><span>System dopasowany do firmy, a nie odwrotnie.</span></li>
+          <li><span class="k"><svg class="ico"><use href="#i-car"/></svg></span><b>Praktyka</b><span>Procesy od kogoś, kto sam wydaje samochody klientom.</span></li>
+          <li><span class="k"><svg class="ico"><use href="#i-check"/></svg></span><b>Prostota</b><span>Panel, który pozwala po prostu działać.</span></li>
+        </ul>
+        <p class="pull">Nie chcieliśmy budować kolejnego CRM-u. Chcieliśmy wreszcie mieć system, z którego sami będziemy zadowoleni.</p>
+      </div>
+    </div>
+
+    <p class="team-lead">Dlatego połączyliśmy dwa światy:</p>
+    <div class="team">
+      <div class="person">
+        <img src="mikolaj.png" width="79" height="79" alt="Mikołaj Chrustowski">
+        <div>
+          <p class="role">Praktyka i procesy</p>
+          <h3>Mikołaj Chrustowski</h3>
+          <p>Od kilku lat prowadzi własną wypożyczalnię aut na Islandii. Codzienna praca z rezerwacjami, flotą, klientami i serwisem. Frustracja z gotowych rozwiązań bez możliwości zmiany. Cała logika systemu to jego doświadczenie przełożone na panel.</p>
+          <a class="tel" href="tel:+3547825558"><svg class="ico"><use href="#i-call"/></svg>+354 782 5558</a>
+        </div>
+      </div>
+      <div class="person">
+        <img src="natalia.png" width="365" height="365" alt="Natalia Jaguś">
+        <div>
+          <p class="role">Technologia i projektowanie</p>
+          <h3>Natalia Jaguś</h3>
+          <p>Od 10 lat projektuje i buduje strony internetowe oraz systemy dla firm. Strona ma sprzedawać i ona o to zadba. Coś, co działa, niech wygląda równie profesjonalnie i zarabia. Czuwa też nad bezpieczeństwem danych, hostingiem i kopiami zapasowymi.</p>
+          <a class="tel" href="https://nataliajagus.com" target="_blank" rel="noopener"><svg class="ico"><use href="#i-globe"/></svg>nataliajagus.com</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="shout">Nie musicie nam tłumaczyć, jak działa wypożyczalnia. My doskonale to wiemy.</p>
+
+    <div class="together">
+      <svg class="ico"><use href="#i-chat"/></svg>
+      <div>
+        <h3>Gotowe systemy są niezmienne. Tu rozwijamy to razem.</h3>
+        <p>Zgłaszacie problem albo pomysł wprost do nas. Bez supportu, kolejek zgłoszeń i odbijania się od ściany.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Prezentacja CRM -->
+  <section class="block wrap" id="panel">
+    <p class="label">Panel CRM od środka</p>
+    <h2 style="margin-top:.8rem">Otwieracie panel i od razu wiecie, co dzieje się w Waszej wypożyczalni.</h2>
+    <p class="lead">Kto odbiera samochód? Co wraca dzisiaj? Które rezerwacje czekają na potwierdzenie? Jakie auta wymagają serwisu? Bez przekopywania się przez wiadomości, kalendarze i arkusze.</p>
+
+    <div class="shots">
+      <div style="min-width:0">
+        <div class="tabs" role="tablist" aria-label="Ekrany panelu">
+          <button type="button" role="tab" aria-selected="true" data-shot="pulpit">Pulpit</button>
+          <button type="button" role="tab" aria-selected="false" data-shot="kalendarz">Kalendarz</button>
+          <button type="button" role="tab" aria-selected="false" data-shot="finanse">Finanse</button>
+          <button type="button" role="tab" aria-selected="false" data-shot="szybka">Szybka rezerwacja</button>
+        </div>
+        <div class="screen">
+          <img data-shot="pulpit" src="panel-pulpit.webp" width="1600" height="1000" alt="Pulpit panelu: prośby do sprawdzenia, odbiory, zwroty, alerty i przychód miesiąca">
+          <img data-shot="kalendarz" src="panel-kalendarz.webp" width="1600" height="1000" alt="Kalendarz floty z rezerwacjami każdego auta na osi czasu" hidden>
+          <img data-shot="finanse" src="panel-finanse.webp" width="1600" height="1000" alt="Finanse: przychód miesiąca, wykres roku i ranking aut" hidden>
+          <img data-shot="szybka" src="panel-szybka.webp" width="1600" height="1000" alt="Szybka rezerwacja: wybór auta i terminu w kalendarzu" hidden>
+        </div>
+        <p class="shot-cap" id="shot-cap">Pulpit: wszystko, co dziś wymaga uwagi, zaraz po zalogowaniu.</p>
+      </div>
+      <div>
+        <div class="phone-solo"><img src="panel-telefon.webp" width="560" height="1212" alt="Pulpit panelu na telefonie"></div>
+        <p class="phone-cap">Ten sam panel na telefonie</p>
+      </div>
+    </div>
+    <p class="sample">Zrzuty z wersji demonstracyjnej z przykładowymi danymi. Przy biurku i z telefonu.</p>
+
+    <div class="feats">
+      <div class="feat"><span class="n">01 · Pulpit dnia</span><h3><svg class="ico"><use href="#i-panel"/></svg>Wszystkie pilne sprawy widzicie od razu po zalogowaniu.</h3><p>Prośby do sprawdzenia, dzisiejsze odbiory, zwroty i alerty.</p></div>
+      <div class="feat"><span class="n">02 · Kalendarz floty</span><h3><svg class="ico"><use href="#i-cal"/></svg>Koniec zgadywania, które auto jest wolne.</h3><p>Wszystkie auta na jednej osi czasu, kolory statusów, blokady i serwis.</p></div>
+      <div class="feat"><span class="n">03 · Rezerwacje</span><h3><svg class="ico"><use href="#i-inbox"/></svg>Każda prośba i każdy status w jednym miejscu.</h3><p>Od prośby po zakończenie, kilka aut w jednej rezerwacji, wiadomości do klienta.</p></div>
+      <div class="feat"><span class="n">04 · Szybka rezerwacja</span><h3><svg class="ico"><use href="#i-bolt"/></svg>Telefon, WhatsApp albo mail? Rezerwacja w minutę.</h3><p>Wpisujecie ją od razu, zanim skończy się rozmowa.</p></div>
+      <div class="feat"><span class="n">05 · Wydanie, zwrot i umowa</span><h3><svg class="ico"><use href="#i-camera"/></svg>Wydanie i zwrot bez papierów.</h3><p>Checklisty, przebieg, paliwo, zdjęcia i kaucja w telefonie. Umowa najmu jednym kliknięciem.</p></div>
+      <div class="feat"><span class="n">06 · Flota</span><h3><svg class="ico"><use href="#i-car"/></svg>Auta, ceny i statusy w jednym miejscu.</h3><p>Zdjęcia, cennik sezonowy, przebieg i status każdego auta.</p></div>
+      <div class="feat"><span class="n">07 · Serwis i przeglądy</span><h3><svg class="ico"><use href="#i-wrench"/></svg>Mechanik wie, co ma zrobić. Wy wiecie, które auta są gotowe.</h3><p>Zadania z osobą, terminem i kosztem. Auto w serwisie znika z wolnych terminów, przeglądy przypominają się same.</p></div>
+      <div class="feat"><span class="n">08 · Sprzęt i dodatki</span><h3><svg class="ico"><use href="#i-box"/></svg>Wiecie, czego zabraknie, zanim zabraknie.</h3><p>Stan magazynu i alerty, gdy w rezerwacjach brakuje sprzętu.</p></div>
+      <div class="feat"><span class="n">09 · Finanse</span><h3><svg class="ico"><use href="#i-chart"/></svg>Wiecie, ile i na czym zarabiacie.</h3><p>Przychód miesiąc po miesiącu, ranking aut i raporty do Excela.</p></div>
+      <div class="feat"><span class="n">10 · Alerty dla zespołu</span><h3><svg class="ico"><use href="#i-users"/></svg>Każdy wie, co jest jego sprawą.</h3><p>Sprawy z przypisaną osobą, np. właściciel, mechanik albo pracownik.</p></div>
+      <div class="feat"><span class="n">11 · Powiadomienia</span><h3><svg class="ico"><use href="#i-bell"/></svg>Nowa prośba? Telefon od razu Wam o tym powie.</h3><p>Powiadomienia przychodzą także przy zamkniętym panelu. Panel działa jak aplikacja.</p></div>
+      <div class="feat"><span class="n">12 · Bezpieczeństwo</span><h3><svg class="ico"><use href="#i-shield"/></svg>Dane pod kontrolą, kopie codziennie.</h3><p>Konta dla zespołu, serwery w UE i codzienne kopie zapasowe.</p></div>
+    </div>
+    <div class="feats-nav">
+      <div class="feats-bar" aria-hidden="true"><span></span></div>
+      <span class="feats-count" aria-live="polite"></span>
+      <button type="button" class="car-btn car-prev" aria-label="Poprzednie funkcje"><svg><use href="#i-arrow"/></svg></button>
+      <button type="button" class="car-btn car-next" aria-label="Następne funkcje"><svg><use href="#i-arrow"/></svg></button>
+    </div>
+  </section>
+
+  <!-- 7. Strona WWW: sprzedaż droższego wariantu -->
+  <section id="strona" class="pitch-sec">
+    <div class="pitch-band dark">
+      <div class="wrap">
+        <div class="pitch">
+          <div>
+            <p class="label">Strona + CRM</p>
+            <h2 style="margin-top:.8rem">Po co Wam strona internetowa, która nie nadąża za Waszą wypożyczalnią?</h2>
+            <p class="lead">Nowa cena, wycofane auto? Nie poprawiacie tego drugi raz na stronie.</p>
+            <p class="lead lead-strong">Zarządzacie wszystkim z jednego miejsca.</p>
+          </div>
+          <figure class="site-mock" aria-label="Przykładowa podstrona auta na Waszej stronie">
+            <div class="bar"><i></i><i></i><i></i><span class="url"><svg class="ico"><use href="#i-shield"/></svg>ilovetrips.rent/auta/toyota-rav4</span></div>
+            <div class="site-body">
+              <div class="car-visual"><img src="car-rav4.webp" width="900" height="900" alt="Toyota RAV4 jako przykład zdjęcia auta na podstronie"></div>
+              <div class="car-info">
+                <small>SUV · 4x4 · automat · 5 miejsc</small>
+                <strong>Toyota RAV4</strong>
+                <span class="dates">12.07 → 19.07 · 7 dni</span>
+                <div class="price-line"><span>za cały pobyt</span><b>115 500 ISK</b></div>
+                <span class="avail">wolne w tym terminie</span>
+                <span class="book">Zarezerwuj</span>
+              </div>
+            </div>
+            <div class="mock-chip"><svg class="ico"><use href="#i-sync"/></svg>cena i termin prosto z panelu</div>
+            <figcaption>Przykładowa podstrona auta. Kwoty i zdjęcie są przykładem.</figcaption>
+          </figure>
+        </div>
+        <div class="reasons">
+          <div class="reason"><span class="k"><svg class="ico"><use href="#i-sync"/></svg></span><h3>Jedna zmiana. Wszędzie aktualne informacje.</h3><p>Zmieniacie cenę lub dostępność w panelu, a strona pokazuje aktualne dane.</p></div>
+          <div class="reason"><span class="k"><svg class="ico"><use href="#i-globe"/></svg></span><h3>Klient nie musi opuszczać Waszej strony.</h3><p>Cały proces wyboru samochodu i wysłania rezerwacji odbywa się na Waszej domenie.</p></div>
+          <div class="reason"><span class="k"><svg class="ico"><use href="#i-car"/></svg></span><h3>Każdy samochód ma własne miejsce do sprzedaży.</h3><p>Zdjęcia, opis, wyposażenie, aktualna cena i rezerwacja w jednym miejscu.</p></div>
+          <div class="reason"><span class="k"><svg class="ico"><use href="#i-shield"/></svg></span><h3>Koniec przerzucania odpowiedzialności.</h3><p>Jedna firma odpowiada za stronę, moduł rezerwacji, hosting i CRM.</p></div>
+        </div>
+        <p class="closer">Wasza strona nie powinna być tylko internetową wizytówką. Powinna aktywnie pomagać Wam sprzedawać wynajem.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band dark alt" id="synchronizacja">
+    <div class="wrap sync">
+      <div>
+        <p class="label">Najważniejsza różnica</p>
+        <h2>Zmieniacie w panelu, strona zmienia się sama</h2>
+        <ul class="sync-list">
+          <li><svg class="ico"><use href="#i-tag"/></svg>ceny sezonowe miesiąc po miesiącu</li>
+          <li><svg class="ico"><use href="#i-car"/></svg>kolejność aut i ukrywanie aut wycofanych</li>
+          <li><svg class="ico"><use href="#i-plus"/></svg>dodatki i sprzęt z cenami</li>
+          <li><svg class="ico"><use href="#i-shield"/></svg>pakiety ochrony</li>
+          <li><svg class="ico"><use href="#i-cal"/></svg>zajęte terminy: klient widzi tylko wolne auta</li>
+        </ul>
+      </div>
+      <div>
+        <div class="flow" aria-label="Zmiana ceny w panelu od razu widoczna na stronie">
+          <div class="mock">
+            <div class="mock-top">Panel · flota</div>
+            <div class="mock-body">
+              <strong>Toyota RAV4</strong>
+              <small>lipiec, cena za dobę</small>
+              <div class="price-field">16 500 <small>ISK</small></div>
+            </div>
+          </div>
+          <span class="flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-sync"/></svg></span>
+          <div class="mock">
+            <div class="mock-top">Wasza strona</div>
+            <div class="mock-body">
+              <strong>Toyota RAV4</strong>
+              <span class="site-price">od 16 500 ISK / doba</span>
+              <span class="free-chip">wolne w Twoim terminie</span>
+            </div>
+          </div>
+        </div>
+        <p class="flow-note">Kwota na schemacie jest przykładem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Zakres, materiały, harmonogram -->
+  <section class="block wrap" id="zakres">
+    <p class="label">Zakres realizacji</p>
+    <h2 style="margin-top:.8rem">Co dostajecie</h2>
+    <p class="lead spec-lead only-1">Wybrany wariant: sam CRM, ze stroną rezerwacji pod przyciskiem „Zarezerwuj” na Waszej obecnej stronie.</p>
+    <p class="lead spec-lead only-2">Wybrany wariant: strona + CRM, pełny zakres.</p>
+    <div class="spec">
+      <div class="only-2">
+        <svg class="ico"><use href="#i-globe"/></svg>
+        <h3>Strona internetowa</h3>
+        <ul class="ticks">
+          <li>projekt dopasowany do Waszego logo i charakteru firmy</li>
+          <li>strona główna, flota, osobna strona każdego auta, dodatki, zasady, FAQ, kontakt</li>
+          <li>wersja polska i angielska</li>
+          <li>wygodna na telefonie, z podstawami SEO</li>
+        </ul>
+      </div>
+      <div>
+        <svg class="ico"><use href="#i-cal"/></svg>
+        <h3>Moduł rezerwacji</h3>
+        <ul class="ticks only-2">
+          <li>termin i tylko wolne auta z ceną za cały pobyt</li>
+          <li>dodatki i pakiet ochrony</li>
+          <li>prośba trafia od razu do panelu</li>
+          <li>klient zostaje na Waszej stronie</li>
+        </ul>
+        <ul class="ticks only-1">
+          <li>link do strony rezerwacji, który podpinacie pod „Zarezerwuj”</li>
+          <li>termin i tylko wolne auta z ceną za cały pobyt</li>
+          <li>dodatki i pakiet ochrony</li>
+          <li>prośba trafia od razu do panelu</li>
+        </ul>
+      </div>
+      <div>
+        <svg class="ico"><use href="#i-panel"/></svg>
+        <h3>Panel CRM</h3>
+        <ul class="ticks">
+          <li>rezerwacje, kalendarz floty i blokady</li>
+          <li>flota z cennikiem, przeglądami i serwisem</li>
+          <li>dodatki ze stanem i alertami o brakach</li>
+          <li>protokoły wydania i zwrotu ze zdjęciami</li>
+          <li>finanse i aplikacja na telefon z powiadomieniami</li>
+          <li class="only-1">szkolenie z panelu online</li>
+        </ul>
+      </div>
+      <div>
+        <svg class="ico"><use href="#i-shield"/></svg>
+        <h3>Hosting i opieka</h3>
+        <ul class="ticks">
+          <li class="only-2">strona i panel w jednym miejscu, serwery w UE</li>
+          <li class="only-1">panel na serwerach w UE</li>
+          <li>codzienne kopie zapasowe</li>
+          <li>aktualizacje i bezpieczeństwo</li>
+          <li>nowe funkcje systemu w cenie</li>
+          <li>wsparcie mailowe w dni robocze</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap only-1" id="start-crm">
+    <p class="label">Jak zaczynamy z CRM</p>
+    <h2 style="margin-top:.8rem">Panel z Waszą flotą, zanim sezon ruszy na dobre</h2>
+    <ol class="next">
+      <li>Rozmowa startowa i umowa.</li>
+      <li>Wpisujemy Waszą flotę, ceny i dodatki do panelu.</li>
+      <li>Szkolenie online i link do rezerwacji, który podpinacie pod „Zarezerwuj” na swojej stronie.</li>
+    </ol>
+  </section>
+
+  <section class="block wrap only-2" id="materialy">
+    <p class="label">Jak zbieramy materiały</p>
+    <h2 style="margin-top:.8rem">Jeden formularz, uzupełniany w Waszym tempie</h2>
+    <div class="materials">
+      <div class="form-mock" aria-label="Przykładowy formularz materiałów">
+        <header><b>Materiały do strony</b><small>przykład · 62% gotowe</small></header>
+        <div class="progress"><span></span></div>
+        <div class="row"><svg class="ico"><use href="#i-pen"/></svg><span>Logo i kolory</span><span class="st ok">gotowe</span></div>
+        <div class="row"><svg class="ico"><use href="#i-image"/></svg><span>Zdjęcia i opisy aut</span><span class="st ok">gotowe</span></div>
+        <div class="row"><svg class="ico"><use href="#i-tag"/></svg><span>Cennik sezonowy</span><span class="st ok">gotowe</span></div>
+        <div class="row"><svg class="ico"><use href="#i-plus"/></svg><span>Dodatki i sprzęt</span><span class="st wait">w trakcie</span></div>
+        <div class="row"><svg class="ico"><use href="#i-shield"/></svg><span>Zasady i ubezpieczenia</span><span class="st wait">w trakcie</span></div>
+        <div class="row"><svg class="ico"><use href="#i-chat"/></svg><span>Najczęstsze pytania</span><span class="st todo">do zrobienia</span></div>
+      </div>
+      <div class="how">
+        <div class="how-item"><span class="k"><svg class="ico"><use href="#i-form"/></svg></span><div><h3>Link na starcie</h3><p>Dostajecie formularz z listą wszystkiego, czego potrzebujemy. Każda pozycja ma podpowiedź, co przygotować.</p></div></div>
+        <div class="how-item"><span class="k"><svg class="ico"><use href="#i-image"/></svg></span><div><h3>Pliki od razu w formularzu</h3><p>Zdjęcia, logo i dokumenty wgrywacie przy danej pozycji. Nie trzeba zbierać wszystkiego w jednym mailu.</p></div></div>
+        <div class="how-item"><span class="k"><svg class="ico"><use href="#i-chat"/></svg></span><div><h3>Komentarze i postęp</h3><p>Przy każdej pozycji możecie zostawić nam komentarz, a pasek pokazuje, ile już jest gotowe.</p></div></div>
+        <div class="how-item"><span class="k"><svg class="ico"><use href="#i-panel"/></svg></span><div><h3>Panel działa wcześniej</h3><p>Flotę, ceny i dodatki wpisujemy od razu do CRM, więc rezerwacje prowadzicie w panelu, zanim strona będzie gotowa.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap only-2" id="harmonogram">
+    <p class="label">Proponowany harmonogram</p>
+    <h2 style="margin-top:.8rem">Trzy tygodnie do nowej strony</h2>
+    <p class="lead">Ten harmonogram dotyczy wdrożenia strony. Sam panel CRM działa wcześniej, bo flotę i ceny wpisujemy do niego już na starcie.</p>
+    <ol class="road">
+      <li class="stop">
+        <span class="post"><span class="sign"><svg class="ico"><use href="#i-flag"/></svg></span></span>
+        <span class="when">Dni 1-2</span>
+        <h3>Start i CRM</h3>
+        <p>Rozmowa startowa, formularz materiałów, panel z Waszą flotą i cennikiem.</p>
+        <div class="who-does"><span class="tag">my</span><span class="tag you">Wy: flota i ceny</span></div>
+      </li>
+      <li class="stop">
+        <span class="post"><span class="sign"><svg class="ico"><use href="#i-pen"/></svg></span></span>
+        <span class="when">Tydzień 1</span>
+        <h3>Materiały i projekt</h3>
+        <p>Uzupełniacie formularz, my przygotowujemy projekt strony głównej do akceptacji.</p>
+        <div class="who-does"><span class="tag you">Wy: formularz</span><span class="tag">my: projekt</span></div>
+      </li>
+      <li class="stop">
+        <span class="post"><span class="sign"><svg class="ico"><use href="#i-globe"/></svg></span></span>
+        <span class="when">Tydzień 2</span>
+        <h3>Budowa strony</h3>
+        <p>Podstrony, flota z CRM, moduł rezerwacji połączony z kalendarzem, PL i EN.</p>
+        <div class="who-does"><span class="tag">my</span></div>
+      </li>
+      <li class="stop">
+        <span class="post"><span class="sign"><svg class="ico"><use href="#i-test"/></svg></span></span>
+        <span class="when">Tydzień 3</span>
+        <h3>Testy i szkolenie</h3>
+        <p>Rezerwacje testowe, szkolenie z panelu online i poprawki.</p>
+        <div class="who-does"><span class="tag">my</span><span class="tag you">Wy: uwagi</span></div>
+      </li>
+      <li class="stop">
+        <span class="post"><span class="sign"><svg class="ico"><use href="#i-rocket"/></svg></span></span>
+        <span class="when">Koniec tygodnia 3</span>
+        <h3>Start strony</h3>
+        <p>Wasza domena, przekierowania ze starej strony, rezerwacje z nowej strony trafiają do panelu.</p>
+        <div class="who-does"><span class="tag">my</span></div>
+      </li>
+    </ol>
+    <div class="notes">
+      <p class="note"><svg class="ico"><use href="#i-flag"/></svg><span><b>Dobry moment na start.</b> Wdrożenie poza sezonem daje Wam spokojne tygodnie na naukę panelu i pierwsze rezerwacje, zanim ruszy główny sezon.</span></p>
+      <p class="note"><svg class="ico"><use href="#i-info"/></svg><span>Harmonogram zakłada, że materiały spłyną w pierwszym tygodniu, a uwagi do projektu i testów przekażecie w ciągu 1-2 dni. Jeśli potrzebujecie więcej czasu, przesuwamy kolejne etapy o tyle samo.</span></p>
+    </div>
+  </section>
+
+  <!-- Demo (2): przed cennikiem -->
+  <!-- 10. Cena -->
+  <section class="block wrap" id="cena">
+    <p class="label">Inwestycja</p>
+    <h2 style="margin-top:.8rem">Ile kosztuje pozbycie się codziennego chaosu?</h2>
+    <p class="lead">Dwa rozwiązania, jeden cel. Mniej ręcznej pracy, więcej kontroli i narzędzia dopasowane do Waszej wypożyczalni.</p>
+    <div class="prices">
+      <article class="variant" data-pick="1">
+        <span class="ribbon">Wybrany wariant</span>
+        <p class="label">Wariant 1</p>
+        <h3>CRM</h3>
+        <div class="money">
+          <div class="money-row"><span>Na start</span><b>0 €</b></div>
+          <div class="money-row"><span>Abonament</span><b>59 €<small>/ mies.</small></b></div>
+        </div>
+        <ul class="ticks"><li>Wasza strona zostaje, „Zarezerwuj” prowadzi do naszej strony rezerwacji</li><li>panel CRM i szkolenie online</li><li>pierwszy miesiąc gratis</li></ul>
+      </article>
+      <article class="variant" data-pick="2">
+        <span class="ribbon">Wybrany wariant</span>
+        <p class="label">Wariant 2</p>
+        <h3>Strona + CRM</h3>
+        <div class="money">
+          <div class="money-row"><span>Strona, jednorazowo</span><b>1500 €</b></div>
+          <div class="money-row"><span>Abonament</span><b>79 €<small>/ mies.</small></b></div>
+        </div>
+        <ul class="ticks"><li>nowa strona PL i EN z rezerwacją na miejscu</li><li>panel CRM, konfiguracja i szkolenie</li><li>hosting, kopie i aktualizacje strony i panelu</li></ul>
+        <div class="upgrade"><b>Za 20 € miesięcznie więcej dostajecie również hosting, utrzymanie, aktualizacje i obsługę nowej strony internetowej.</b><span>Nie musicie osobno zajmować się stroną, systemem i ich integracją. Płacicie za spokój.</span></div>
+      </article>
+    </div>
+    <div class="vs" role="table" aria-label="Porównanie wariantów">
+      <div class="vs-row vs-head" role="row"><span role="columnheader"></span><span role="columnheader">Sam CRM<small>wariant 1</small></span><span role="columnheader">Strona + CRM<small>wariant 2</small></span></div>
+      <div class="vs-row" role="row"><span role="cell">Rezerwacja na Waszej stronie i domenie</span><span role="cell"><span class="no" aria-label="nie">-</span></span><span role="cell"><span class="yes" aria-label="tak">✓</span></span></div>
+      <div class="vs-row" role="row"><span role="cell">Wyszukiwarka aut na stronie głównej</span><span role="cell"><span class="no" aria-label="nie">-</span></span><span role="cell"><span class="yes" aria-label="tak">✓</span></span></div>
+      <div class="vs-row" role="row"><span role="cell">Ceny i flota na stronie aktualizują się same</span><span role="cell"><span class="no" aria-label="nie">-</span></span><span role="cell"><span class="yes" aria-label="tak">✓</span></span></div>
+      <div class="vs-row" role="row"><span role="cell">Osobna strona każdego auta z ceną i rezerwacją</span><span role="cell"><span class="no" aria-label="nie">-</span></span><span role="cell"><span class="yes" aria-label="tak">✓</span></span></div>
+      <div class="vs-row" role="row"><span role="cell">Panel CRM z kalendarzem, protokołami i finansami</span><span role="cell"><span class="yes" aria-label="tak">✓</span></span><span role="cell"><span class="yes" aria-label="tak">✓</span></span></div>
+      <div class="vs-row" role="row"><span role="cell">Jedna firma odpowiada za stronę i panel</span><span role="cell"><span class="no" aria-label="nie">-</span></span><span role="cell"><span class="yes" aria-label="tak">✓</span></span></div>
+    </div>
+    <p class="vs-note"><b>Różnica to 1500 € jednorazowo i 20 € miesięcznie.</b> W zamian dostajecie stronę, która pracuje na rezerwacje, zamiast tylko je przekierowywać.</p>
+    <ul class="fine">
+      <li>Umowa na czas nieokreślony, miesięczne wypowiedzenie</li>
+      <li>Abonament płatny kartą, automatycznie co miesiąc</li>
+      <li>Kwoty ostateczne: faktura z Polski, 0 VAT dla firmy z Islandii</li>
+    </ul>
+    <p class="aside">Poza ceną: domena (opłacacie ją u swojego rejestratora), kolejne języki, płatności online zaliczek i funkcje tylko dla Was, wyceniane osobno.</p>
+  </section>
+
+  <section class="block wrap" id="pytania">
+    <p class="label">Pytania przed decyzją</p>
+    <h2 style="margin-top:.8rem">Najczęstsze pytania</h2>
+    <div class="faq">
+      <details><summary>Na jak długo podpisujemy umowę?</summary><p>Na czas nieokreślony, z miesięcznym okresem wypowiedzenia. Jeśli system się u Was nie sprawdzi, kończycie współpracę z końcem kolejnego miesiąca.</p></details>
+      <details><summary>Co z rezerwacjami, które już mamy?</summary><p>Wpisujecie je do panelu sami przez szybką rezerwację: auto, termin i dane klienta. Na szkoleniu pokażemy, jak zrobić to najszybciej.</p></details>
+      <details class="only-2"><summary>Czy strona będzie po islandzku?</summary><p>Strona powstaje po polsku i angielsku. Wersję islandzką możemy dodać, wyceniamy ją osobno.</p></details>
+      <details><summary>Czy możemy pobrać swoje dane?</summary><p>Tak. Rezerwacje, przychody i ranking aut pobieracie w każdej chwili jako raporty do Excela.</p></details>
+      <details><summary>Gdzie są przechowywane dane klientów?</summary><p>Na serwerach w Unii Europejskiej. Dostęp mają tylko konta Waszego zespołu, każda osoba loguje się na swoje konto.</p></details>
+      <details class="only-2"><summary>Co z naszą obecną stroną i pozycją w Google?</summary><p>Przy starcie ustawiamy przekierowania ze starych adresów na nowe, żeby klienci i Google trafiali na właściwe podstrony.</p></details>
+    </div>
+  </section>
+
+  <!-- 11. Finalne CTA -->
+  <section class="block wrap" id="kontakt">
+    <div class="contact dark">
+      <div>
+        <p class="label">Decyzja</p>
+        <h2>Kolejny sezon możecie zacząć z tymi samymi problemami. Albo wreszcie coś zmienić i uporządkować.</h2>
+        <p>Znacie swoje problemy. My znamy realia prowadzenia wypożyczalni i mamy już przygotowane rozwiązanie. Wasza flota może zacząć działać w nowym systemie bez czekania na nową stronę. Wybierzcie wariant i zacznijmy wdrożenie.</p>
+        <div class="who">
+          <img src="mikolaj.png" width="79" height="79" alt="">
+          <div><b>Mikołaj Chrustowski</b><a class="num" href="tel:+3547825558">+354 782 5558</a></div>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn signal big" id="cta-accept" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Zaczynamy współpracę <svg class="ico"><use href="#i-arrow"/></svg></a>
+        <a class="btn line" id="cta-talk" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-chat"/></svg>Porozmawiajmy o szczegółach</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Ofertę przygotowali <b>Mikołaj Chrustowski</b> i <b>Natalia Jaguś</b> · <span style="font-family:var(--mono)">+354 782 5558</span></span>
+    <span>14.10.2026 · kwoty w euro, ostateczne (0 VAT)</span>
+  </div>
+</footer>
+<a class="wa-float" id="wa-float" href="#" target="_blank" rel="noopener" aria-label="Napisz do Mikołaja na WhatsApp"><svg class="ico"><use href="#i-wa"/></svg>Napisz do nas</a>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Wybór wariantu: zapamiętany na czas przeglądania, zmienia widoczne sekcje i wyróżnia pakiet w cenniku
+  const WA = "https://wa.me/3547825558?text=";
+  const msgs = {
+    "1": { accept: "Dzień dobry, wybieramy ofertę CRM (wariant 1) dla I Love Trips. Ustalmy termin rozmowy startowej.", talk: "Dzień dobry, mamy kilka pytań do oferty na CRM dla I Love Trips." },
+    "2": { accept: "Dzień dobry, akceptujemy ofertę na stronę i CRM dla I Love Trips (wariant 2). Ustalmy termin rozmowy startowej.", talk: "Dzień dobry, mamy kilka pytań do oferty na stronę i CRM dla I Love Trips." },
+  };
+  let variant = "2";
+  try { const s = sessionStorage.getItem("ilt-wariant"); if (s === "1" || s === "2") variant = s; } catch {}
+  const choices = [...document.querySelectorAll(".choice")];
+  const priceCards = [...document.querySelectorAll(".variant")];
+  const spec = document.querySelector(".spec");
+  const applyVariant = (v) => {
+    variant = v;
+    root.dataset.v = v;
+    try { sessionStorage.setItem("ilt-wariant", v); } catch {}
+    choices.forEach((c) => c.setAttribute("aria-checked", String(c.dataset.pick === v)));
+    priceCards.forEach((c) => c.classList.toggle("chosen", c.dataset.pick === v));
+    spec.classList.toggle("three", v === "1");
+    const m = msgs[v];
+    document.getElementById("cta-accept").href = WA + encodeURIComponent(m.accept);
+    document.getElementById("cta-talk").href = WA + encodeURIComponent(m.talk);
+    document.getElementById("wa-float").href = WA + encodeURIComponent(m.talk);
+  };
+  choices.forEach((c) => {
+    c.addEventListener("click", () => applyVariant(c.dataset.pick));
+    c.addEventListener("keydown", (e) => { if (e.target === c && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); applyVariant(c.dataset.pick); } });
+  });
+  applyVariant(variant);
+
+  // Pasek postępu czytania
+  const bar = document.createElement("div");
+  bar.className = "read-progress";
+  document.body.prepend(bar);
+
+  // Spis treści: podświetlenie bieżącej sekcji i linia pod przyklejonym paskiem
+  const tocBar = document.querySelector(".toc-bar");
+  const toc = tocBar.querySelector(".toc");
+  const links = [...toc.querySelectorAll("a")];
+  const sections = links.map((a) => document.getElementById(a.getAttribute("href").slice(1)));
+  let current = null;
+
+  // Pływający WhatsApp
+  const wa = document.querySelector(".wa-float");
+  const hero = document.querySelector(".hero");
+  const contact = document.querySelector(".contact");
+
+  const onScroll = () => {
+    const m = root.scrollHeight - innerHeight;
+    bar.style.transform = "scaleX(" + (m > 0 ? scrollY / m : 0) + ")";
+    tocBar.classList.toggle("stuck", tocBar.getBoundingClientRect().top <= 0 && scrollY > 0);
+    let idx = -1;
+    sections.forEach((s, i) => { if (s && s.offsetParent !== null && s.getBoundingClientRect().top <= innerHeight * 0.35) idx = i; });
+    tocBar.classList.toggle("more", toc.scrollWidth > toc.clientWidth + toc.scrollLeft + 4);
+    const act = links[idx] || null;
+    if (act !== current) {
+      current = act;
+      links.forEach((a) => a.classList.toggle("active", a === act));
+      if (act && toc.scrollWidth > toc.clientWidth) toc.scrollTo({ left: Math.max(0, act.getBoundingClientRect().left - toc.getBoundingClientRect().left + toc.scrollLeft - 20), behavior: reduce ? "auto" : "smooth" });
+    }
+    wa.classList.toggle("show", hero.getBoundingClientRect().bottom < 0 && contact.getBoundingClientRect().top > innerHeight);
+  };
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll);
+  onScroll();
+
+  // Zakładki ze zrzutami panelu
+  const caps = {
+    pulpit: "Pulpit: wszystko, co dziś wymaga uwagi, zaraz po zalogowaniu.",
+    kalendarz: "Kalendarz floty: każde auto w osobnym wierszu, rezerwacje w kolorach statusów.",
+    finanse: "Finanse: przychód miesiąca, porównanie z poprzednim i ranking aut.",
+    szybka: "Szybka rezerwacja: auto, termin i dane klienta, zanim skończy się rozmowa.",
+  };
+  const tabs = document.querySelectorAll(".tabs [data-shot]");
+  const imgs = document.querySelectorAll(".screen img[data-shot]");
+  const cap = document.getElementById("shot-cap");
+  tabs.forEach((t) => t.addEventListener("click", () => {
+    tabs.forEach((x) => x.setAttribute("aria-selected", String(x === t)));
+    imgs.forEach((i) => (i.hidden = i.dataset.shot !== t.dataset.shot));
+    cap.textContent = caps[t.dataset.shot];
+  }));
+
+  // Karuzela funkcji: strzałki, przeciąganie myszą, po końcu wraca na początek
+  const track = document.querySelector(".feats");
+  const cards = [...track.children];
+  const prev = document.querySelector(".car-prev");
+  const next = document.querySelector(".car-next");
+  const fbar = document.querySelector(".feats-bar span");
+  const count = document.querySelector(".feats-count");
+  const step = () => cards[1].offsetLeft - cards[0].offsetLeft;
+  const perView = () => Math.max(1, Math.round(track.clientWidth / step()));
+  const max = () => track.scrollWidth - track.clientWidth;
+  const go = (left) => track.scrollTo({ left, behavior: reduce ? "auto" : "smooth" });
+  const upd = () => {
+    const m = max(), w = perView() / cards.length;
+    fbar.style.width = (w * 100) + "%";
+    fbar.style.transform = "translateX(" + (m > 0 ? (track.scrollLeft / m) * (1 / w - 1) * 100 : 0) + "%)";
+    count.textContent = Math.min(cards.length, Math.round(track.scrollLeft / step()) + perView()) + " / " + cards.length;
+  };
+  next.addEventListener("click", () => track.scrollLeft >= max() - 2 ? go(0) : go(track.scrollLeft + step() * perView()));
+  prev.addEventListener("click", () => track.scrollLeft <= 2 ? go(max()) : go(track.scrollLeft - step() * perView()));
+  let drag = null;
+  track.addEventListener("pointerdown", (e) => { if (e.pointerType === "mouse" && e.button === 0) drag = { x: e.clientX, left: track.scrollLeft, moved: false, id: e.pointerId, dx: 0 }; });
+  track.addEventListener("pointermove", (e) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x;
+    if (!drag.moved && Math.abs(dx) < 5) return;
+    if (!drag.moved) { drag.moved = true; try { track.setPointerCapture(drag.id); } catch {} track.classList.add("dragging"); }
+    track.scrollLeft = drag.left - dx; drag.dx = dx;
+  });
+  const stop = () => {
+    if (!drag) return;
+    const d = drag; drag = null;
+    if (!d.moved) return;
+    track.classList.remove("dragging");
+    if (d.left >= max() - 2 && d.dx < -60) return go(0);
+    if (d.left <= 2 && d.dx > 60) return go(max());
+    go(Math.round(track.scrollLeft / step()) * step());
+  };
+  track.addEventListener("pointerup", stop);
+  track.addEventListener("pointercancel", stop);
+  track.addEventListener("dragstart", (e) => e.preventDefault());
+  track.addEventListener("scroll", upd, { passive: true });
+  addEventListener("resize", upd);
+  upd();
+
+  // FAQ: płynne rozwijanie
+  document.querySelectorAll(".faq details").forEach((d) => {
+    const body = d.querySelector("p");
+    d.querySelector("summary").addEventListener("click", (e) => {
+      if (reduce) return;
+      e.preventDefault();
+      if (d.dataset.busy) return;
+      d.dataset.busy = "1";
+      const done = () => delete d.dataset.busy;
+      if (d.open) {
+        const a = body.animate([{ height: body.offsetHeight + "px", opacity: 1 }, { height: "0px", opacity: 0 }], { duration: 260, easing: "ease-in" });
+        a.onfinish = () => { d.open = false; done(); };
+      } else {
+        d.open = true;
+        const h = body.offsetHeight;
+        const a = body.animate([{ height: "0px", opacity: 0 }, { height: h + "px", opacity: 1 }], { duration: 340, easing: "cubic-bezier(.2,.7,.2,1)" });
+        a.onfinish = done;
+      }
+    });
+  });
+
+  // Schemat synchronizacji: cena w panelu rośnie, po chwili ta sama cena pojawia się na stronie
+  let synced = false;
+  const syncDemo = () => {
+    if (synced || reduce) return; synced = true;
+    const field = document.querySelector(".price-field"), site = document.querySelector(".site-price"), arrow = document.querySelector(".flow-arrow");
+    const fmt = (n) => n.toLocaleString("pl-PL").replace(/[^0-9]/g, " ");
+    const from = 14900, to = 16500;
+    field.firstChild.textContent = fmt(from) + " ";
+    site.textContent = "od " + fmt(from) + " ISK / doba";
+    const t0 = performance.now() + 500;
+    const tick = () => {
+      const p = Math.min(1, Math.max(0, (performance.now() - t0) / 900));
+      field.firstChild.textContent = fmt(Math.round((from + (to - from) * (1 - Math.pow(1 - p, 3))) / 100) * 100) + " ";
+      if (p < 1) return setTimeout(tick, 30);
+      field.classList.add("flash"); arrow.classList.add("spin");
+      setTimeout(() => { site.textContent = "od " + fmt(to) + " ISK / doba"; site.classList.add("flash"); }, 700);
+    };
+    tick();
+  };
+
+  // Wjeżdżanie elementów: tylko to, co jest poniżej pierwszego ekranu; po skoku z menu odsłaniamy wszystko powyżej
+  if (reduce) return;
+  const sel = [".pain", ".choice", ".together", ".reason", ".vs", ".why > *", ".compare-row", ".person", ".sync > *", ".shots > *", ".feats", ".spec > div", ".form-mock", ".how-item", ".stop", ".note", ".variant", ".faq details", ".next li", ".contact"];
+  const items = [];
+  sel.forEach((s) => document.querySelectorAll(s).forEach((el) => {
+    if (el.getBoundingClientRect().top < innerHeight) return; // pierwszy ekran zostaje od razu widoczny
+    const sibs = [...el.parentElement.children].filter((c) => c.matches(s));
+    el.classList.add("reveal");
+    el.style.setProperty("--d", Math.min(sibs.indexOf(el), 5) * 80 + "ms");
+    items.push(el);
+  }));
+  const road = document.querySelector(".road");
+  const syncEl = document.getElementById("synchronizacja");
+  root.classList.add("js");
+  const pending = [...items, road, syncEl];
+  const check = () => {
+    if (!innerHeight || document.hidden) return;
+    for (let i = pending.length - 1; i >= 0; i--) {
+      const el = pending[i];
+      if (el.getBoundingClientRect().top < innerHeight * 0.88) {
+        el.classList.add("in");
+        if (el === syncEl) syncDemo();
+        pending.splice(i, 1);
+      }
+    }
+  };
+  addEventListener("scroll", check, { passive: true });
+  document.addEventListener("visibilitychange", check);
+  check();
+  setTimeout(() => { if (!innerHeight || document.hidden) pending.splice(0).forEach((el) => el.classList.add("in")); }, 1500);
+})();
+</script>
+
+</body>
+</html>
